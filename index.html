@@ -410,30 +410,45 @@ async function ghReq(method,path,body){
 }
 
 async function ghPush(msg){
+  _pushing=true;
   setSyncUI('saving','Publicando en GitHub...');
   try{
     let sha;try{const f=await ghReq('GET','data.json');sha=f.sha;}catch(e){}
-    const content=JSON.stringify({participants:S.participants,results:S.results},null,2);
-    const b64=btoa(unescape(encodeURIComponent(content)));
+    const payload=JSON.stringify({participants:S.participants,results:S.results},null,2);
+    const b64=btoa(unescape(encodeURIComponent(payload)));
     const body={message:msg,content:b64};if(sha)body.sha=sha;
     await ghReq('PUT','data.json',body);
     setSyncUI('ok','Publicado en GitHub');
-  }catch(e){setSyncUI('err','Error: '+e.message);throw e;}
+  }catch(ex){setSyncUI('err','Error: '+ex.message);throw ex;}
+  finally{
+    // Release push guard after 10s — enough time for GitHub CDN to propagate
+    setTimeout(()=>{_pushing=false;},10000);
+  }
 }
+
+let _pushing=false; // guard: don't pull while a push is in flight
 
 async function ghPull(){
   const c=ghCfg();if(!c.owner||!c.repo)return;
+  if(_pushing)return; // skip pull if we just pushed — our local copy is authoritative
   try{
     const url='https://raw.githubusercontent.com/'+c.owner+'/'+c.repo+'/main/data.json?_='+Date.now();
-    const r=await fetch(url);if(!r.ok)throw new Error('No data.json');
+    const r=await fetch(url);
+    if(!r.ok){setSyncUI('err','Sin datos remotos aun');return;}
     const d=await r.json();
-    if(d.participants&&d.results){
+    if(!d.participants||!d.results)return; // malformed — keep local
+    // Only accept remote if it has >= participants than local (prevents overwrite after fresh push)
+    if(d.participants.length>=S.participants.length){
       const pass=S.password;
-      S=blank();S.password=pass;
-      S.participants=d.participants;S.results=d.results;
+      // Merge: keep local password, take remote data
+      S.participants=d.participants;
+      S.results=d.results;
+      S.password=pass;
       saveLocal();setSyncUI('ok','Sincronizado');
+    } else {
+      setSyncUI('ok','Local mas reciente'); // local wins, no overwrite
     }
-  }catch(e){setSyncUI('err','Sin datos remotos aun');}
+  }catch(ex){setSyncUI('err','Sin datos remotos aun');}
 }
 
 function saveGHConfig(){
@@ -645,9 +660,17 @@ function gv(id){return(document.getElementById(id)||{}).value||'';}
 function sv(id,val){const el=document.getElementById(id);if(el)el.value=val;}
 
 /* INIT */
-loadLocal();renderAll();showAdm();
-(async()=>{setSyncUI('saving','Sincronizando...');await ghPull();renderAll();})();
-setInterval(async()=>{await ghPull();renderAll();},60000);
+loadLocal();   // 1. Load local data immediately — always the source of truth on startup
+renderAll();   // 2. Render with local data right away — no blank flash
+showAdm();
+// 3. Then try to sync from GitHub in background (won't overwrite if local is newer)
+(async()=>{
+  setSyncUI('saving','Sincronizando...');
+  await ghPull();
+  renderAll();  // re-render only if remote had more data
+})();
+// Auto-refresh every 90s so other devices see updates
+setInterval(async()=>{await ghPull();renderAll();},90000);
 </script>
 </body>
 </html>
