@@ -63,30 +63,32 @@ nav.tabs button.active{background:var(--lime);color:var(--ink);box-shadow:0 0 24
 .stitle{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:.02em;margin-bottom:28px;display:flex;align-items:center;gap:16px;}
 .stitle .pill{font-size:.38em;font-style:normal;font-weight:700;letter-spacing:.12em;background:var(--lime);color:var(--ink);border-radius:999px;padding:4px 14px;vertical-align:middle;}
 
-/* PODIUM */
-.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
-.pod-card{position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:transform .3s,border-color .3s;cursor:pointer;}
-.pod-card:hover{transform:translateY(-4px);border-color:var(--border-h)}
-.pod-card.p1{border-color:rgba(255,201,78,.35);background:linear-gradient(135deg,rgba(255,201,78,.1) 0%,var(--glass) 60%);}
-.pod-card.p1::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,201,78,.25),transparent 70%);}
-.pod-rank{font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;font-style:italic;line-height:1;color:var(--dim);margin-bottom:8px;}
-.p1 .pod-rank{color:var(--r1)}.p2 .pod-rank{color:var(--r2)}.p3 .pod-rank{color:var(--r3)}
-.pod-name{font-size:22px;font-weight:800;margin-bottom:6px;word-break:break-word}
-.pod-pts{font-family:'Barlow Condensed',sans-serif;font-size:56px;font-weight:900;color:var(--lime);line-height:1;}
-.pod-pts small{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);display:block;letter-spacing:.15em;margin-top:2px}
-.pod-bd{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:10px;line-height:1.7}
-
-/* LB REST */
-.lb-rest{display:flex;flex-direction:column;gap:8px}
-.lb-row{display:grid;grid-template-columns:56px 1fr auto auto;align-items:center;gap:16px;background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:16px 22px;cursor:pointer;transition:all .25s;}
-.lb-row:hover{border-color:var(--border-h);transform:translateX(6px)}
-.lb-row .rk{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;font-style:italic;color:var(--dim)}
-.lb-row .nm{font-size:17px;font-weight:700}
-.lb-row .bd{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px}
-.lb-row .pts{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--lime);text-align:right;line-height:1}
-.lb-row .pts small{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);display:block;letter-spacing:.15em}
-.eyebtn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:7px 12px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+/* RANKING TABLE */
+.lb-table{width:100%;border-collapse:separate;border-spacing:0 6px;}
+.lb-table thead tr th{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;padding:0 16px 10px;text-align:left;border-bottom:1px solid var(--border);}
+.lb-table thead tr th.r{text-align:right}
+.lb-table tbody tr{background:var(--glass);border-radius:12px;cursor:pointer;transition:all .22s;}
+.lb-table tbody tr:hover{background:var(--glass-b);transform:translateX(4px);}
+.lb-table tbody tr.top1{background:linear-gradient(90deg,rgba(255,201,78,.09),var(--glass) 50%);}
+.lb-table tbody tr.top2{background:linear-gradient(90deg,rgba(192,205,214,.06),var(--glass) 50%);}
+.lb-table tbody tr.top3{background:linear-gradient(90deg,rgba(205,139,90,.07),var(--glass) 50%);}
+.lb-table tbody tr td{padding:14px 16px;vertical-align:middle;}
+.lb-table tbody tr td:first-child{border-radius:12px 0 0 12px;padding-left:20px;}
+.lb-table tbody tr td:last-child{border-radius:0 12px 12px 0;padding-right:20px;}
+.td-pos{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;font-style:italic;color:var(--dim);width:44px;min-width:44px;}
+.top1 .td-pos{color:var(--r1)}.top2 .td-pos{color:var(--r2)}.top3 .td-pos{color:var(--r3)}
+.td-medal{width:24px;font-size:16px;text-align:center;}
+.td-name{font-size:15px;font-weight:800;white-space:nowrap;}
+.td-bd{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:3px;line-height:1.5;}
+.td-bar-wrap{width:120px;}
+.td-bar{height:3px;background:var(--border);border-radius:99px;margin-top:6px;overflow:hidden;}
+.td-bar-fill{height:100%;background:var(--lime);border-radius:99px;transition:width .6s cubic-bezier(.22,1,.36,1);}
+.td-pts{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--lime);text-align:right;white-space:nowrap;line-height:1;}
+.td-pts small{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);display:block;letter-spacing:.15em;}
+.td-act{text-align:right;white-space:nowrap;}
+.eyebtn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 11px;border-radius:7px;font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer;transition:all .2s;}
 .eyebtn:hover{color:var(--lime);border-color:var(--lime)}
+@media(max-width:700px){.td-bar-wrap,.td-act{display:none}.td-bd{display:none}}
 
 /* BRACKET */
 .bracket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:40px}
@@ -107,16 +109,7 @@ nav.tabs button.active{background:var(--lime);color:var(--ink);box-shadow:0 0 24
 .sp-value{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;font-style:italic;line-height:1;word-break:break-word}
 .sp-value.empty{color:var(--dim)}
 
-/* PREDICTIONS */
-.pred-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.pred-card{background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:24px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
-.pred-card:hover{border-color:var(--lime);transform:translateY(-3px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.pred-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--lime-glow) 0%,transparent 50%);opacity:0;transition:opacity .3s;}
-.pred-card:hover::before{opacity:1}
-.pred-name{font-size:20px;font-weight:800;margin-bottom:6px;position:relative}
-.pred-pts{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--lime);line-height:1;position:relative}
-.pred-pts small{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);display:block;letter-spacing:.15em}
-.pred-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:10px;line-height:1.8;position:relative}
+/* PREDICTIONS removed - merged into leaderboard modal */
 
 /* MODAL */
 .modal-bg{position:fixed;inset:0;z-index:200;background:rgba(4,8,15,.88);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:20px;}
@@ -170,8 +163,8 @@ select option{background:var(--ink2)}
 .gh-status{display:flex;align-items:center;gap:10px;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
 .hint{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);line-height:1.7;margin-top:10px}
 
-@media(max-width:900px){.admin-cols{grid-template-columns:1fr}.gh-cols{grid-template-columns:1fr}.podium{grid-template-columns:1fr}}
-@media(max-width:640px){.hero{grid-template-columns:1fr}.lb-row{grid-template-columns:44px 1fr auto}.lb-row .eyebtn{display:none}}
+@media(max-width:900px){.admin-cols{grid-template-columns:1fr}.gh-cols{grid-template-columns:1fr}}
+@media(max-width:640px){.hero{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -193,15 +186,24 @@ select option{background:var(--ink2)}
 <nav class="tabs">
   <button class="active" data-tab="leaderboard">Clasificaci&oacute;n</button>
   <button data-tab="bracket">Mundial</button>
-  <button data-tab="predictions">Predicciones</button>
   <button data-tab="admin">Admin</button>
 </nav>
 
 <!-- LEADERBOARD -->
 <section class="view active" id="view-leaderboard">
   <div class="stitle">Clasificaci&oacute;n <span class="pill">LIVE</span></div>
-  <div class="podium" id="podium"></div>
-  <div class="lb-rest" id="lb-rest"></div>
+  <div style="overflow-x:auto">
+    <table class="lb-table" id="lb-table">
+      <thead><tr>
+        <th style="width:44px">#</th>
+        <th style="width:28px"></th>
+        <th>Participante</th>
+        <th class="r" style="width:100px">Puntos</th>
+        <th class="r" style="width:100px"></th>
+      </tr></thead>
+      <tbody id="lb-body"></tbody>
+    </table>
+  </div>
 </section>
 
 <!-- BRACKET -->
@@ -230,11 +232,7 @@ select option{background:var(--ink2)}
   </div>
 </section>
 
-<!-- PREDICTIONS -->
-<section class="view" id="view-predictions">
-  <div class="stitle">Predicciones</div>
-  <div class="pred-grid" id="pred-grid"></div>
-</section>
+<!-- Predictions merged into leaderboard modal -->
 
 <!-- ADMIN -->
 <section class="view" id="view-admin">
@@ -486,31 +484,31 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
 });
 
 /* RENDER */
-function renderAll(){renderLB();renderBracket();renderPred();}
+function renderAll(){renderLB();renderBracket();}
 
 function renderLB(){
   const sorted=S.participants.map(p=>({p,...score(p)})).sort((a,b)=>b.total-a.total);
-  const pod=document.getElementById('podium');
-  const rest=document.getElementById('lb-rest');
+  const tbody=document.getElementById('lb-body');
   if(!sorted.length){
-    pod.innerHTML='';
-    rest.innerHTML='<div style="text-align:center;padding:80px;color:var(--muted);font-family:JetBrains Mono,monospace">Sin participantes todavia</div>';
+    tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:80px;color:var(--muted);font-family:JetBrains Mono,monospace">Sin participantes todavia</td></tr>';
     return;
   }
-  const top=sorted.slice(0,3);
-  pod.style.gridTemplateColumns='repeat('+Math.min(top.length,3)+',1fr)';
-  pod.innerHTML=top.map((x,i)=>'<div class="pod-card p'+(i+1)+'" onclick="showModal(\''+x.p.id+'\')">'
-    +'<div class="pod-rank">0'+(i+1)+'</div>'
-    +'<div class="pod-name">'+e(x.p.name)+'</div>'
-    +'<div class="pod-pts">'+x.total+'<small>PUNTOS</small></div>'
-    +'<div class="pod-bd">'+bdStr(x.bd)+'</div>'
-    +'</div>').join('');
-  rest.innerHTML=sorted.slice(3).map((x,i)=>'<div class="lb-row" onclick="showModal(\''+x.p.id+'\')">'
-    +'<div class="rk">0'+(i+4)+'</div>'
-    +'<div><div class="nm">'+e(x.p.name)+'</div><div class="bd">'+bdStr(x.bd)+'</div></div>'
-    +'<button class="eyebtn" onclick="event.stopPropagation();showModal(\''+x.p.id+'\')">Ver picks</button>'
-    +'<div class="pts">'+x.total+'<small>PTS</small></div>'
-    +'</div>').join('');
+  const topScore=sorted[0]?sorted[0].total:1;
+  const rowCls=['top1','top2','top3'];
+  const medals=['\uD83E\uDD47','\uD83E\uDD48','\uD83E\uDD49'];
+  tbody.innerHTML=sorted.map((x,i)=>{
+    const pct=topScore>0?Math.round((x.total/topScore)*100):0;
+    return '<tr class="'+(rowCls[i]||'')+'" onclick="showModal(\''+x.p.id+'\')">'
+      +'<td class="td-pos">'+(i+1)+'</td>'
+      +'<td class="td-medal">'+(i<3?medals[i]:'')+'</td>'
+      +'<td><div class="td-name">'+e(x.p.name)+'</div>'
+        +'<div class="td-bd">'+bdStr(x.bd)+'</div>'
+        +'<div class="td-bar"><div class="td-bar-fill" style="width:'+pct+'%"></div></div>'
+      +'</td>'
+      +'<td class="td-pts">'+x.total+'<small>pts</small></td>'
+      +'<td class="td-act"><button class="eyebtn" onclick="event.stopPropagation();showModal(\''+x.p.id+'\')">ver picks</button></td>'
+    +'</tr>';
+  }).join('');
 }
 
 function renderBracket(){
@@ -530,16 +528,7 @@ function chips(arr,n){
 }
 function setSp(id,v){const el=document.getElementById(id);el.textContent=v||'--';el.classList.toggle('empty',!v);}
 
-function renderPred(){
-  const el=document.getElementById('pred-grid');
-  if(!S.participants.length){el.innerHTML='<div style="color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px">Sin predicciones todavia.</div>';return;}
-  const sorted=S.participants.map(p=>({p,...score(p)})).sort((a,b)=>b.total-a.total);
-  el.innerHTML=sorted.map(x=>'<div class="pred-card" onclick="showModal(\''+x.p.id+'\')">'
-    +'<div class="pred-name">'+e(x.p.name)+'</div>'
-    +'<div class="pred-pts">'+x.total+'<small>PUNTOS</small></div>'
-    +'<div class="pred-meta">Campeon: '+e(x.p.champion||'--')+'<br>Pichichi: '+e(x.p.topScorer||'--')+'<br>MVP: '+e(x.p.mvp||'--')+'</div>'
-    +'</div>').join('');
-}
+
 
 /* MODAL */
 function showModal(id){
