@@ -363,7 +363,26 @@ select option{background:var(--ink2)}
 })();
 
 /* CONSTANTS */
-const ALL_TEAMS=["Albania","Alemania","Arabia Saudi","Argelia","Argentina","Australia","Austria","Azerbaiyan","Belgica","Bolivia","Brasil","Cabo Verde","Camerun","Canada","Chile","Colombia","Congo","Corea del Sur","Costa de Marfil","Costa Rica","Croacia","Dinamarca","Ecuador","Egipto","Escocia","Eslovenia","Espana","Estados Unidos","Francia","Ghana","Grecia","Guatemala","Guinea","Honduras","Hungria","Indonesia","Inglaterra","Irak","Iran","Islandia","Japon","Jordania","Kazajistan","Kenya","Libano","Mali","Marruecos","Mexico","Nigeria","Noruega","Nueva Zelanda","Oman","Paises Bajos","Panama","Paraguay","Peru","Polonia","Portugal","Qatar","Republica Checa","Romania","Ruanda","Senegal","Serbia","Siria","Sudafrica","Sudan del Sur","Suecia","Suiza","Tanzania","Trinidad y Tobago","Tunez","Turquia","Ucrania","Uganda","Uruguay","Uzbekistan","Venezuela","Zambia","Zimbabwe"].sort((a,b)=>a.localeCompare(b,'es'));
+const ALL_TEAMS=[
+  "Alemania","Arabia Saudi","Argelia","Argentina","Australia","Austria",
+  "Belgica","Bosnia y Herzegovina","Brasil",
+  "Cabo Verde","Canada","Colombia","Corea del Sur","Costa de Marfil","Curazao",
+  "Dinamarca",
+  "Ecuador","Egipto","Escocia","Espana","Estados Unidos",
+  "Francia",
+  "Ghana",
+  "Haiti",
+  "Inglaterra","Irak","Iran",
+  "Japon","Jordania",
+  "Marruecos","Mexico",
+  "Nueva Zelanda","Noruega",
+  "Paises Bajos","Panama","Paraguay","Portugal",
+  "Qatar",
+  "RD Congo","Republica Checa",
+  "Senegal","Sudafrica","Suecia","Suiza",
+  "Tunez","Turquia",
+  "Uruguay","Uzbekistan"
+].sort((a,b)=>a.localeCompare(b,'es'));
 
 const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
 function blank(){return{password:'porra2026',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
