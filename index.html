@@ -174,12 +174,12 @@ select option{background:var(--ink2)}
 
 <header class="hero">
   <div>
-    <div class="eyebrow">Porra Usabal Kiroldegia &middot; Edici&oacute;n especial</div>
+    <div class="eyebrow">Porra de la oficina &middot; Edici&oacute;n especial</div>
     <h1 class="hero-title">Porra<br><span class="acc">Mundial</span><span class="yr">2026</span></h1>
   </div>
   <div style="text-align:right">
     <div class="sync-pill"><span class="sdot" id="sdot"></span><span id="stxt">Cargando&hellip;</span></div>
-    <div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--dim)">USA &middot; CANAD&Aacute; &middot; M&Eacute;XICO</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim)">USA &middot; CANAD&Aacute; &middot; M&Eacute;XICO</div>
   </div>
 </header>
 
@@ -191,7 +191,7 @@ select option{background:var(--ink2)}
 
 <!-- LEADERBOARD -->
 <section class="view active" id="view-leaderboard">
-  <div class="stitle">Clasificaci&oacute;n <span class="pill">EN VIVO</span></div>
+  <div class="stitle">Clasificaci&oacute;n <span class="pill">LIVE</span></div>
   <div style="overflow-x:auto">
     <table class="lb-table" id="lb-table">
       <thead><tr>
@@ -269,7 +269,8 @@ select option{background:var(--ink2)}
       <div class="hint">
         El token se guarda solo en tu navegador (localStorage). Necesita permiso <strong style="color:var(--muted)">repo</strong>.<br>
         Los datos se commitean como <strong style="color:var(--muted)">data.json</strong> en la ra&iacute;z del repo.<br>
-        El repo puede ser <strong style="color:var(--muted)">p&uacute;blico</strong> (la web lee data.json sin auth) o privado (solo el admin escribe).
+        <strong style="color:var(--red)">&#9888; Para que todos los visitantes vean los datos sin configurar nada,
+        edita las constantes <code>GH_OWNER</code> y <code>GH_REPO</code> al inicio del &lt;script&gt; en index.html antes de subir a GitHub.</strong>
       </div>
     </div>
     <!-- Toolbar -->
@@ -383,6 +384,11 @@ const ALL_TEAMS=[
 ].sort((a,b)=>a.localeCompare(b,'es'));
 
 const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
+// ─── CONFIGURA AQUI tu repo para que TODOS los visitantes lean los datos ───
+// Cambia estos dos valores antes de subir a GitHub:
+const GH_OWNER = '';  // tu usuario de GitHub, ej: 'eneko'
+const GH_REPO  = '';  // nombre del repo,    ej: 'porra-mundial-2026'
+// ──────────────────────────────────────────────────────────────────────────
 function blank(){return{password:'porra2026',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
 let S=blank();
 
@@ -429,10 +435,14 @@ async function ghPush(msg){
 let _pushing=false; // guard: don't pull while a push is in flight
 
 async function ghPull(){
-  const c=ghCfg();if(!c.owner||!c.repo)return;
+  // Use hardcoded constants OR admin-saved config (for flexibility)
+  const c=ghCfg();
+  const owner=c.owner||GH_OWNER;
+  const repo=c.repo||GH_REPO;
+  if(!owner||!repo)return; // not configured at all
   if(_pushing)return; // skip pull if we just pushed — our local copy is authoritative
   try{
-    const url='https://raw.githubusercontent.com/'+c.owner+'/'+c.repo+'/main/data.json?_='+Date.now();
+    const url='https://raw.githubusercontent.com/'+owner+'/'+repo+'/main/data.json?_='+Date.now();
     const r=await fetch(url);
     if(!r.ok){setSyncUI('err','Sin datos remotos aun');return;}
     const d=await r.json();
