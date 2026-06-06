@@ -715,6 +715,14 @@ function buildAdm(){
   fsel('res-champ',ALL_TEAMS,S.results.champion);fsel('res-runner',ALL_TEAMS,S.results.runnerUp);
   sv('res-scorer',S.results.topScorer||'');sv('res-mvp',S.results.mvp||'');
   renderPlist();
+  // API key field
+  const _k=getFdKey();
+  const _fi=document.getElementById('fd-key-input');
+  const _fs=document.getElementById('fd-key-status');
+  if(_fi) _fi.value=_k||'';
+  if(_fs) _fs.innerHTML=_k
+    ?'<span style="color:var(--lime)">&#10003; Key configurada ('+_k.length+' car.) &mdash; visible en todos los dispositivos</span>'
+    :'<span style="color:var(--muted)">Sin key &mdash; introdúcela para ver resultados en tiempo real</span>';
 }
 function mkPicker(id,teams,pre,max,cb){
   const el=document.getElementById(id);if(!el)return;
