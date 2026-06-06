@@ -698,12 +698,8 @@ function buildAdm(){
       uc('cnt2',0,2);
     });uc('cnt4',0,4);
     fsel('new-champ',ALL_TEAMS,'');fsel('new-runner',ALL_TEAMS,'');
-  // Show existing API key status
-    :'<span style="color:var(--muted)">Sin key — introdúcela y se publicará para todos los dispositivos</span>';
   });
   fsel('new-champ',ALL_TEAMS,'');fsel('new-runner',ALL_TEAMS,'');
-  // Show existing API key status
-    :'<span style="color:var(--muted)">Sin key — introdúcela y se publicará para todos los dispositivos</span>';
   mkPicker('res-q',ALL_TEAMS,S.results.quarters,8,()=>uc('rcnt-q',pv('res-q').length,8));
   mkPicker('res-s',ALL_TEAMS,S.results.semis,4,()=>uc('rcnt-s',pv('res-s').length,4));
   mkPicker('res-f',ALL_TEAMS,S.results.finals,2,()=>uc('rcnt-f',pv('res-f').length,2));
@@ -1041,7 +1037,7 @@ function renderMatchAdmin(){
       +'<input type="number" min="0" max="30" id="ag_'+key+'" placeholder="Visitante" value="'+(res.ag!==undefined?res.ag:'')+'" style="width:70px;text-align:center"/>'
       +'<label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);text-transform:none;letter-spacing:0;margin:0">'
       +'<input type="checkbox" id="live_'+key+'"'+(res.live?' checked':'')+' style="width:auto;accent-color:var(--lime)"/> EN VIVO</label>'
-      +'<button class="btn btn-lime btn-sm" onclick="saveMatchResult(''+key+'',''+m.home+'',''+m.away+'')">Guardar</button>'
+      +'<button class="btn btn-lime btn-sm" onclick="saveMatchResult(\''+key+'\',\''+m.home+'\',\''+m.away+'\')">Guardar</button>'
       +'</div></div>';
   }).join('');
 }
