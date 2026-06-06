@@ -331,17 +331,21 @@ select option{background:var(--ink2)}
 
     <!-- Football API -->
     <div class="gh-card" style="border-color:rgba(78,255,212,.15)">
-      <h3 style="color:var(--cyan)">&#9917; API de Resultados en tiempo real</h3>
-      <div class="hint" style="margin-top:0;color:var(--muted);line-height:1.9">
-        Los resultados se obtienen v&iacute;a proxy serverless (sin CORS). Para activarlos:<br>
-        <strong style="color:var(--text)">1.</strong> Reg&iacute;strate gratis en
-        <a href="https://www.football-data.org/client/register" target="_blank" style="color:var(--cyan)">football-data.org</a>
-        y copia tu API key.<br>
-        <strong style="color:var(--text)">2.</strong> En Vercel &rarr; tu proyecto &rarr; <strong style="color:var(--text)">Settings &rarr; Environment Variables</strong>.<br>
-        <strong style="color:var(--text)">3.</strong> A&ntilde;ade: <code style="color:var(--lime)">FD_API_KEY</code> = tu key &rarr; Save &rarr; Redeploy.<br>
-        <strong style="color:var(--text)">4.</strong> Aseg&uacute;rate de que el repo tiene la carpeta <code style="color:var(--lime)">api/football.js</code> subida.<br>
-        Una vez configurado, grupos y calendario se actualizan autom&aacute;ticamente.
+      <h3 style="color:var(--cyan)">&#9917; API de Resultados (football-data.org)</h3>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:14px;align-items:flex-end">
+        <div class="field">
+          <label>API Key gratuita de football-data.org</label>
+          <input type="password" id="fd-key-input" placeholder="Tu API key (32 caracteres)"/>
+        </div>
+        <button class="btn btn-lime btn-sm" style="margin-bottom:0" onclick="saveFdKey()">Guardar</button>
       </div>
+      <div class="hint" style="margin-top:12px">
+        Reg&iacute;strate gratis en
+        <a href="https://www.football-data.org/client/register" target="_blank" style="color:var(--cyan)">football-data.org</a>
+        &rarr; copia tu API key &rarr; p&eacute;gala aqu&iacute;.<br>
+        Se guarda en tu navegador. La llave da acceso a resultados en tiempo real sin ning&uacute;n servidor extra.
+      </div>
+      <div id="fd-key-status" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:10px;color:var(--muted)"></div>
     </div>
     <!-- Toolbar -->
     <div class="toolbar">
@@ -456,10 +460,10 @@ const ALL_TEAMS=[
 const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
 // ─── CONFIGURA AQUI tu repo para que TODOS los visitantes lean los datos ───
 // Cambia estos dos valores antes de subir a GitHub:
-const GH_OWNER = 'txitxotx';  // tu usuario de GitHub, ej: 'eneko'
-const GH_REPO  = 'mundial';  // nombre del repo,    ej: 'porra-mundial-2026'
+const GH_OWNER = '';  // tu usuario de GitHub, ej: 'eneko'
+const GH_REPO  = '';  // nombre del repo,    ej: 'porra-mundial-2026'
 // ──────────────────────────────────────────────────────────────────────────
-function blank(){return{password:'porra2026',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
+function blank(){return{password:'porra2026',fdApiKey:'',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
 let S=blank();
 
 function loadLocal(){try{const r=localStorage.getItem(SK);if(r)S=JSON.parse(r);}catch(e){}}
@@ -490,7 +494,7 @@ async function ghPush(msg){
   setSyncUI('saving','Publicando en GitHub...');
   try{
     let sha;try{const f=await ghReq('GET','data.json');sha=f.sha;}catch(e){}
-    const payload=JSON.stringify({participants:S.participants,results:S.results},null,2);
+    const payload=JSON.stringify({participants:S.participants,results:S.results,fdApiKey:S.fdApiKey||''},null,2);
     const b64=btoa(unescape(encodeURIComponent(payload)));
     const body={message:msg,content:b64};if(sha)body.sha=sha;
     await ghReq('PUT','data.json',body);
@@ -528,8 +532,11 @@ async function ghPull(){
       S.participants=d.participants;
       S.results=d.results;
       S.password=pass;
+      if(d.fdApiKey) S.fdApiKey=d.fdApiKey; // sync API key to all devices
       saveLocal();setSyncUI('ok','Sincronizado');
     }else{
+      // Even if local has more participants, still sync the API key
+      if(d.fdApiKey&&!S.fdApiKey) S.fdApiKey=d.fdApiKey;
       setSyncUI('ok','Listo');
     }
   }catch(ex){
@@ -683,8 +690,24 @@ function buildAdm(){
       uc('cnt2',0,2);
     });uc('cnt4',0,4);
     fsel('new-champ',ALL_TEAMS,'');fsel('new-runner',ALL_TEAMS,'');
+  // Show existing API key status
+  const existingKey=getFdKey();
+  const fdInp=document.getElementById('fd-key-input');
+  const fdSt=document.getElementById('fd-key-status');
+  if(fdInp) fdInp.value=existingKey||'';
+  if(fdSt) fdSt.innerHTML=existingKey
+    ?'<span style="color:var(--lime)">&#10003; Key configurada y sincronizada con GitHub ('+existingKey.length+' car.)</span>'
+    :'<span style="color:var(--muted)">Sin key — introdúcela y se publicará para todos los dispositivos</span>';
   });
   fsel('new-champ',ALL_TEAMS,'');fsel('new-runner',ALL_TEAMS,'');
+  // Show existing API key status
+  const existingKey=getFdKey();
+  const fdInp=document.getElementById('fd-key-input');
+  const fdSt=document.getElementById('fd-key-status');
+  if(fdInp) fdInp.value=existingKey||'';
+  if(fdSt) fdSt.innerHTML=existingKey
+    ?'<span style="color:var(--lime)">&#10003; Key configurada y sincronizada con GitHub ('+existingKey.length+' car.)</span>'
+    :'<span style="color:var(--muted)">Sin key — introdúcela y se publicará para todos los dispositivos</span>';
   mkPicker('res-q',ALL_TEAMS,S.results.quarters,8,()=>uc('rcnt-q',pv('res-q').length,8));
   mkPicker('res-s',ALL_TEAMS,S.results.semis,4,()=>uc('rcnt-s',pv('res-s').length,4));
   mkPicker('res-f',ALL_TEAMS,S.results.finals,2,()=>uc('rcnt-f',pv('res-f').length,2));
@@ -766,25 +789,49 @@ const WC_GROUPS = {
 };
 
 /* ═══ FOOTBALL-DATA.ORG API ═════════════════════════════════════════════ */
-// API key lives in Vercel env var FD_API_KEY — not in the browser
-function saveFdKey(){ alert('La API key se configura en las variables de entorno de Vercel (FD_API_KEY), no aqui.'); }
+async function saveFdKey(){
+  const k=(document.getElementById('fd-key-input')||{}).value||'';
+  const trimmed=k.trim();
+  if(!trimmed||trimmed.length<20){alert('Pega una API key válida');return;}
+  S.fdApiKey=trimmed;
+  saveLocal();
+  try{
+    await ghPush('Update API key');
+    const st=document.getElementById('fd-key-status');
+    if(st) st.innerHTML='<span style="color:var(--lime)">&#10003; Key guardada y publicada. Todos los dispositivos la verán.</span>';
+    alert('API key guardada y subida a GitHub. Todos los dispositivos la cargarán automáticamente.');
+  }catch(ex){
+    alert('Key guardada localmente pero fallo al subir a GitHub:\n'+ex.message);
+  }
+}
 
 const WC_CODE='WC'; // football-data.org uses competition code, not ID
 // Path builder — football-data.org v4 accepts /competitions/WC/...
 function wcPath(sub){ return '/competitions/'+WC_CODE+sub; }
 
+function getFdKey(){
+  // Key lives in state — synced to GitHub like all other data, visible to all devices
+  return S.fdApiKey||'';
+}
+
 async function fdGet(path){
-  // Calls our Vercel proxy at /api/football — avoids CORS and keeps API key server-side
+  const key=getFdKey();
+  if(!key) throw new Error('sin_key');
   const ctrl=new AbortController();
   const tid=setTimeout(()=>ctrl.abort(),10000);
   try{
-    const r=await fetch('/api/football?path='+encodeURIComponent(path),{signal:ctrl.signal});
-    if(r.status===500){
-      // Proxy running but FD_API_KEY not set in Vercel env vars
-      throw new Error('sin_key');
+    // Call football-data.org directly — they support CORS from browsers
+    const r=await fetch('https://api.football-data.org/v4'+path,{
+      headers:{'X-Auth-Token':key},
+      signal:ctrl.signal
+    });
+    const json=await r.json().catch(()=>({}));
+    if(!r.ok){
+      const err=new Error(json.message||('HTTP '+r.status));
+      err.httpStatus=r.status;
+      throw err;
     }
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
+    return json;
   }finally{clearTimeout(tid);}
 }
 
@@ -877,6 +924,12 @@ async function renderCalendar(){
   const pill=document.getElementById('cal-date-pill');
   if(pill) pill.textContent=ds===calDateStr(new Date())?'HOY':ds;
 
+  const _key=getFdKey();
+  if(!_key){
+    if(note) note.style.display='block';
+    el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px;line-height:2">Sin API key.<br><span style="font-size:10px">Ve a Admin → API de Resultados</span></div>';
+    return;
+  }
   if(note) note.style.display='none';
   el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:20px">Cargando partidos...</div>';
 
@@ -912,13 +965,15 @@ async function renderCalendar(){
         +'</div>';
     }).join('');
   }catch(ex){
-    if(ex.message==='sin_key'){
-      el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px">Configura FD_API_KEY en Vercel → Environment Variables.</div>';
-    } else if(ex.name==='AbortError'){
-      el.innerHTML='<div style="text-align:center;color:var(--red);font-family:JetBrains Mono,monospace;padding:40px">Timeout — el proxy no responde. Comprueba que api/football.js esta en el repo y que Vercel ha redesplegado.</div>';
+    let msg='';
+    if(ex.name==='AbortError'){
+      msg='Timeout: el proxy no responde.<br>Verifica que <code>api/football.js</code> existe en tu repo y que Vercel ha redesplegado.';
     } else {
-      el.innerHTML='<div style="text-align:center;color:var(--red);font-family:JetBrains Mono,monospace;padding:40px;line-height:1.8">Error: '+ex.message+'<br><span style="font-size:10px;color:var(--muted)">Abre DevTools → Network → busca /api/football para ver la respuesta completa</span></div>';
+      msg='Error: '+ex.message;
+      if(ex.httpStatus) msg+=' (HTTP '+ex.httpStatus+')';
+      if(ex.proxyDetail&&ex.proxyDetail.hint) msg+='<br><span style="color:var(--muted)">'+ex.proxyDetail.hint+'</span>';
     }
+    el.innerHTML='<div style="text-align:center;color:var(--red);font-family:JetBrains Mono,monospace;padding:40px;line-height:2">'+msg+'</div>';
   }
 }
 
