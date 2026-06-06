@@ -331,23 +331,15 @@ select option{background:var(--ink2)}
 
     <!-- Football API -->
     <div class="gh-card" style="border-color:rgba(78,255,212,.15)">
-      <h3 style="color:var(--cyan)">&#9917; API de Resultados (football-data.org)</h3>
-      <div style="display:grid;grid-template-columns:1fr auto;gap:14px;align-items:flex-end">
-        <div class="field">
-          <label>API Key gratuita de football-data.org</label>
-          <input type="password" id="fd-key-input" placeholder="Tu API key (32 caracteres)"/>
-        </div>
-        <button class="btn btn-lime btn-sm" style="margin-bottom:0" onclick="saveFdKey()">Guardar</button>
+      <h3 style="color:var(--cyan)">&#9917; API de Resultados</h3>
+      <div class="hint" style="margin-top:0;line-height:1.9">
+        Los grupos y el calendario se cargan autom&aacute;ticamente desde
+        <strong style="color:var(--cyan)">worldcup26.ir</strong> &mdash;
+        una API p&uacute;blica y gratuita del Mundial 2026, sin registro ni API key.<br>
+        No necesitas configurar nada. Los datos se actualizan en tiempo real para todos los dispositivos.
       </div>
-      <div class="hint" style="margin-top:12px">
-        Reg&iacute;strate gratis en
-        <a href="https://www.football-data.org/client/register" target="_blank" style="color:var(--cyan)">football-data.org</a>
-        &rarr; copia tu API key &rarr; p&eacute;gala aqu&iacute;.<br>
-        Se guarda en tu navegador. La llave da acceso a resultados en tiempo real sin ning&uacute;n servidor extra.
-      </div>
-      <div id="fd-key-status" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:10px;color:var(--muted)"></div>
     </div>
-    <!-- Toolbar -->
+        <!-- Toolbar -->
     <div class="toolbar">
       <button class="btn btn-ghost btn-sm" onclick="changePassword()">Cambiar contrase&ntilde;a</button>
       <button class="btn btn-ghost btn-sm" onclick="adminLogout()">Cerrar sesi&oacute;n</button>
@@ -463,7 +455,7 @@ const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
 const GH_OWNER = '';  // tu usuario de GitHub, ej: 'eneko'
 const GH_REPO  = '';  // nombre del repo,    ej: 'porra-mundial-2026'
 // ──────────────────────────────────────────────────────────────────────────
-function blank(){return{password:'porra2026',fdApiKey:'',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
+function blank(){return{password:'porra2026',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
 let S=blank();
 
 function loadLocal(){try{const r=localStorage.getItem(SK);if(r)S=JSON.parse(r);}catch(e){}}
@@ -494,7 +486,7 @@ async function ghPush(msg){
   setSyncUI('saving','Publicando en GitHub...');
   try{
     let sha;try{const f=await ghReq('GET','data.json');sha=f.sha;}catch(e){}
-    const payload=JSON.stringify({participants:S.participants,results:S.results,fdApiKey:S.fdApiKey||''},null,2);
+    const payload=JSON.stringify({participants:S.participants,results:S.results},null,2);
     const b64=btoa(unescape(encodeURIComponent(payload)));
     const body={message:msg,content:b64};if(sha)body.sha=sha;
     await ghReq('PUT','data.json',body);
@@ -532,11 +524,13 @@ async function ghPull(){
       S.participants=d.participants;
       S.results=d.results;
       S.password=pass;
-      if(d.fdApiKey) S.fdApiKey=d.fdApiKey; // sync API key to all devices
+      if(d.fdApiKey) S.fdApiKey=d.fdApiKey;
+if(d.fdProxyUrl) S.fdProxyUrl=d.fdProxyUrl;
       saveLocal();setSyncUI('ok','Sincronizado');
     }else{
       // Even if local has more participants, still sync the API key
       if(d.fdApiKey&&!S.fdApiKey) S.fdApiKey=d.fdApiKey;
+if(d.fdProxyUrl&&!S.fdProxyUrl) S.fdProxyUrl=d.fdProxyUrl;
       setSyncUI('ok','Listo');
     }
   }catch(ex){
@@ -716,13 +710,7 @@ function buildAdm(){
   sv('res-scorer',S.results.topScorer||'');sv('res-mvp',S.results.mvp||'');
   renderPlist();
   // API key field
-  const _k=getFdKey();
-  const _fi=document.getElementById('fd-key-input');
-  const _fs=document.getElementById('fd-key-status');
-  if(_fi) _fi.value=_k||'';
-  if(_fs) _fs.innerHTML=_k
-    ?'<span style="color:var(--lime)">&#10003; Key configurada ('+_k.length+' car.) &mdash; visible en todos los dispositivos</span>'
-    :'<span style="color:var(--muted)">Sin key &mdash; introdúcela para ver resultados en tiempo real</span>';
+
 }
 function mkPicker(id,teams,pre,max,cb){
   const el=document.getElementById(id);if(!el)return;
@@ -778,7 +766,6 @@ function ea(s){return e(s);}
 function gv(id){return(document.getElementById(id)||{}).value||'';}
 function sv(id,val){const el=document.getElementById(id);if(el)el.value=val;}
 
-const FD_KEY='porra2026_fd';
 
 /* ═══ WORLD CUP 2026 GROUPS — sorteo oficial ══════════════════════════════ */
 const WC_GROUPS = {
@@ -799,103 +786,95 @@ const WC_GROUPS = {
 /* ═══ FOOTBALL-DATA.ORG API ═════════════════════════════════════════════ */
 async function saveFdKey(){
   const k=(document.getElementById('fd-key-input')||{}).value||'';
+  const p=(document.getElementById('fd-proxy-input')||{}).value||'';
   const trimmed=k.trim();
-  if(!trimmed||trimmed.length<20){alert('Pega una API key válida');return;}
+  const proxy=p.trim();
+  if(!trimmed||trimmed.length<20){alert('Pega una API key válida (mín. 20 caracteres)');return;}
+  if(!proxy||!proxy.startsWith('https://')){alert('Pega la URL de tu Cloudflare Worker (empieza por https://)');return;}
   S.fdApiKey=trimmed;
+  S.fdProxyUrl=proxy;
   saveLocal();
   try{
-    await ghPush('Update API key');
+    await ghPush('Update API config');
     const st=document.getElementById('fd-key-status');
-    if(st) st.innerHTML='<span style="color:var(--lime)">&#10003; Key guardada y publicada. Todos los dispositivos la verán.</span>';
-    alert('API key guardada y subida a GitHub. Todos los dispositivos la cargarán automáticamente.');
+    if(st) st.innerHTML='<span style="color:var(--lime)">&#10003; Guardado y publicado para todos los dispositivos</span>';
+    alert('Configuración guardada y subida a GitHub.');
   }catch(ex){
-    alert('Key guardada localmente pero fallo al subir a GitHub:\n'+ex.message);
+    alert('Guardado localmente pero falló GitHub:\n'+ex.message);
   }
 }
 
-const WC_CODE='WC'; // football-data.org uses competition code, not ID
-// Path builder — football-data.org v4 accepts /competitions/WC/...
-function wcPath(sub){ return '/competitions/'+WC_CODE+sub; }
 
-function getFdKey(){
-  // Key lives in state — synced to GitHub like all other data, visible to all devices
-  return S.fdApiKey||'';
-}
 
-async function fdGet(path){
-  const key=getFdKey();
-  if(!key) throw new Error('sin_key');
+
+// worldcup26.ir — free, no auth, CORS-friendly API for World Cup 2026
+const WC26_BASE='https://worldcup26.ir/get';
+async function wc26Get(endpoint){
   const ctrl=new AbortController();
-  const tid=setTimeout(()=>ctrl.abort(),10000);
+  const tid=setTimeout(()=>ctrl.abort(),8000);
   try{
-    // Call football-data.org directly — they support CORS from browsers
-    const r=await fetch('https://api.football-data.org/v4'+path,{
-      headers:{'X-Auth-Token':key},
-      signal:ctrl.signal
-    });
-    const json=await r.json().catch(()=>({}));
-    if(!r.ok){
-      const err=new Error(json.message||('HTTP '+r.status));
-      err.httpStatus=r.status;
-      throw err;
-    }
-    return json;
+    const r=await fetch(WC26_BASE+endpoint,{signal:ctrl.signal});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r.json();
   }finally{clearTimeout(tid);}
 }
 
 /* ── Groups & Standings ─────────────────────────────────────────────── */
-let _standingsCache=null, _standingsTs=0;
-async function fetchStandings(){
-  if(_standingsCache && Date.now()-_standingsTs<5*60*1000) return _standingsCache;
-  const d=await fdGet(wcPath('/standings?season=2026'));
-  _standingsCache=d; _standingsTs=Date.now();
+let _groupsCache=null, _groupsTs=0;
+async function fetchGroups(){
+  if(_groupsCache && Date.now()-_groupsTs<3*60*1000) return _groupsCache;
+  const d=await wc26Get('/groups');
+  _groupsCache=d; _groupsTs=Date.now();
+  return d;
+}
+let _gamesCache={};
+async function fetchGames(date){
+  if(_gamesCache[date] && Date.now()-_gamesCache[date].ts<60*1000) return _gamesCache[date].d;
+  const d=await wc26Get('/games');
+  // cache all games, filter by date on render
+  _gamesCache[date]={d,ts:Date.now()};
   return d;
 }
 
 function renderGroups(apiData){
   const el=document.getElementById('groups-grid'); if(!el) return;
   const src=document.getElementById('groups-src');
-
-  // Build groups data: prefer live API, fall back to hardcoded
   let groups=[];
-  if(apiData && apiData.standings){
-    // API data: array of {stage, type, group, table:[{position,team,playedGames,won,draw,lost,goalsFor,goalsAgainst,points}]}
-    groups=apiData.standings.filter(s=>s.type==='TOTAL').map(s=>({
-      name: s.group ? s.group.replace('GROUP_','Grupo ') : 'Grupo',
-      teams: s.table.map(r=>({
-        name: r.team.name,
-        played: r.playedGames,
-        won: r.won,
-        draw: r.draw,
-        lost: r.lost,
-        gf: r.goalsFor,
-        ga: r.goalsAgainst,
-        pts: r.points
+
+  if(apiData && Array.isArray(apiData)){
+    // worldcup26.ir format: [{group:'A', teams:[{name,played,won,draw,lost,gf,ga,pts}]}]
+    groups=apiData.map(g=>({
+      name:'Grupo '+g.group,
+      teams:(g.teams||[]).map(t=>({
+        name:t.name||t.team||'',
+        played:t.played||t.mp||0,
+        won:t.won||t.w||0,
+        draw:t.draw||t.d||0,
+        lost:t.lost||t.l||0,
+        gf:t.gf||t.goals_for||0,
+        ga:t.ga||t.goals_against||0,
+        pts:t.pts||t.points||0
       }))
     }));
     if(src) src.textContent='EN VIVO';
   } else {
-    // Fallback: hardcoded groups, all zeros
     groups=Object.entries(WC_GROUPS).map(([k,teams])=>({
       name:'Grupo '+k,
-      teams: teams.map(t=>({name:t,played:0,won:0,draw:0,lost:0,gf:0,ga:0,pts:0}))
+      teams:teams.map(t=>({name:t,played:0,won:0,draw:0,lost:0,gf:0,ga:0,pts:0}))
     }));
     if(src) src.textContent='LOCAL';
   }
 
-  el.innerHTML=groups.map((g,gi)=>{
-    const rows=g.teams.map((t,i)=>{
-      const cls = i<2?'promoted':'';
-      return '<tr class="'+cls+'">'
-        +'<td>'+e(t.name)+'</td>'
-        +'<td>'+t.played+'</td>'
-        +'<td>'+t.won+'</td>'
-        +'<td>'+t.draw+'</td>'
-        +'<td>'+t.lost+'</td>'
-        +'<td>'+(t.gf-t.ga)+'</td>'
-        +'<td class="g-pts">'+t.pts+'</td>'
-        +'</tr>';
-    }).join('');
+  el.innerHTML=groups.map(g=>{
+    const rows=g.teams.map((t,i)=>'<tr class="'+(i<2?'promoted':'')+'">'
+      +'<td>'+e(t.name)+'</td>'
+      +'<td>'+t.played+'</td>'
+      +'<td>'+t.won+'</td>'
+      +'<td>'+t.draw+'</td>'
+      +'<td>'+t.lost+'</td>'
+      +'<td>'+(t.gf-t.ga)+'</td>'
+      +'<td class="g-pts">'+t.pts+'</td>'
+      +'</tr>').join('');
     return '<div class="g-card">'
       +'<div class="g-head"><span class="g-name">'+e(g.name)+'</span></div>'
       +'<table class="g-table">'
@@ -986,13 +965,12 @@ async function renderCalendar(){
 }
 
 async function refreshMundial(){
-  // Try to get live standings from API
   try{
-    const d=await fetchStandings();
+    const d=await fetchGroups();
     renderGroups(d);
   }catch(ex){
-    console.warn('Standings API error:', ex.message);
-    renderGroups(null); // fallback to hardcoded
+    console.warn('Groups API error:', ex.message);
+    renderGroups(null);
   }
   renderCalendar();
 }
