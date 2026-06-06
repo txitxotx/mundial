@@ -473,7 +473,7 @@ const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
 const GH_OWNER = '';  // tu usuario de GitHub, ej: 'eneko'
 const GH_REPO  = '';  // nombre del repo,    ej: 'porra-mundial-2026'
 // ──────────────────────────────────────────────────────────────────────────
-function blank(){return{password:'porra2026',matchResults:{},participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
+function blank(){return{password:'porra2026',matchResults:{},groupStandings:{},participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
 let S=blank();
 
 function loadLocal(){try{const r=localStorage.getItem(SK);if(r)S=JSON.parse(r);}catch(e){}}
@@ -504,7 +504,7 @@ async function ghPush(msg){
   setSyncUI('saving','Publicando en GitHub...');
   try{
     let sha;try{const f=await ghReq('GET','data.json');sha=f.sha;}catch(e){}
-    const payload=JSON.stringify({participants:S.participants,results:S.results,matchResults:S.matchResults||{}},null,2);
+    const payload=JSON.stringify({participants:S.participants,results:S.results,matchResults:S.matchResults||{},groupStandings:S.groupStandings||{}},null,2);
     const b64=btoa(unescape(encodeURIComponent(payload)));
     const body={message:msg,content:b64};if(sha)body.sha=sha;
     await ghReq('PUT','data.json',body);
@@ -887,56 +887,30 @@ async function saveFdKey(){
 
 
 
-// worldcup26.ir — free, no auth, CORS-friendly API for World Cup 2026
-const WC26_BASE='https://worldcup26.ir/get';
-async function wc26Get(endpoint){
-  const ctrl=new AbortController();
-  const tid=setTimeout(()=>ctrl.abort(),8000);
-  try{
-    const r=await fetch(WC26_BASE+endpoint,{signal:ctrl.signal});
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
-  }finally{clearTimeout(tid);}
-}
+
 
 /* ── Groups & Standings ─────────────────────────────────────────────── */
-let _groupsCache=null, _groupsTs=0;
-async function fetchGroups(){
-  if(_groupsCache && Date.now()-_groupsTs<3*60*1000) return _groupsCache;
-  const d=await wc26Get('/groups');
-  _groupsCache=d; _groupsTs=Date.now();
-  return d;
-}
 
 
-function renderGroups(apiData){
+
+function renderGroups(){
   const el=document.getElementById('groups-grid'); if(!el) return;
   const src=document.getElementById('groups-src');
-  let groups=[];
+  const stored=S.groupStandings||{};
+  const hasData=Object.keys(stored).length>0;
 
-  if(apiData && Array.isArray(apiData)){
-    // worldcup26.ir format: [{group:'A', teams:[{name,played,won,draw,lost,gf,ga,pts}]}]
-    groups=apiData.map(g=>({
-      name:'Grupo '+g.group,
-      teams:(g.teams||[]).map(t=>({
-        name:t.name||t.team||'',
-        played:t.played||t.mp||0,
-        won:t.won||t.w||0,
-        draw:t.draw||t.d||0,
-        lost:t.lost||t.l||0,
-        gf:t.gf||t.goals_for||0,
-        ga:t.ga||t.goals_against||0,
-        pts:t.pts||t.points||0
-      }))
-    }));
-    if(src) src.textContent='EN VIVO';
-  } else {
-    groups=Object.entries(WC_GROUPS).map(([k,teams])=>({
+  // Build groups list: use stored data if available, otherwise hardcoded with zeros
+  const groups=Object.keys(WC_GROUPS).sort().map(k=>{
+    if(hasData && stored[k]){
+      return {name:'Grupo '+k, teams: stored[k]};
+    }
+    return {
       name:'Grupo '+k,
-      teams:teams.map(t=>({name:t,played:0,won:0,draw:0,lost:0,gf:0,ga:0,pts:0}))
-    }));
-    if(src) src.textContent='LOCAL';
-  }
+      teams: WC_GROUPS[k].map(t=>({name:t,played:0,won:0,draw:0,lost:0,gf:0,ga:0,pts:0}))
+    };
+  });
+
+  if(src) src.textContent = hasData ? 'EN VIVO' : 'INICIAL';
 
   el.innerHTML=groups.map(g=>{
     const rows=g.teams.map((t,i)=>'<tr class="'+(i<2?'promoted':'')+'">'
@@ -1028,15 +1002,9 @@ async function renderCalendar(){
   }).join('');
 }
 
-async function refreshMundial(){
-  renderCalendar(); // always works — hardcoded data
-  try{
-    const d=await fetchGroups();
-    renderGroups(d);
-  }catch(ex){
-    console.warn('Groups API error:', ex.message);
-    renderGroups(null); // fallback to hardcoded
-  }
+function refreshMundial(){
+  renderCalendar();
+  renderGroups();
 }
 
 
@@ -1093,7 +1061,7 @@ loadLocal();
 renderAll();
 showAdm();
 setSyncUI('ok','Listo');
-renderGroups(null); // hardcoded groups shown immediately
+renderGroups(); // initial render
 renderCalendar();   // hardcoded calendar — always works
 // Sync from GitHub once on load, then every 90s
 (async()=>{

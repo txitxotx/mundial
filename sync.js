@@ -114,9 +114,14 @@ async function getTodayFixtures() {
 }
 
 async function getMatchDetail(matchId) {
-  // Detailed endpoint includes goals array with scorer + minute
   const data = await fdGet(`/matches/${matchId}`);
   return data;
+}
+
+async function getStandings() {
+  // Returns group standings (one per group, type TOTAL)
+  const data = await fdGet(`/competitions/${WC_CODE}/standings`);
+  return data.standings || [];
 }
 
 // ── Main sync logic ───────────────────────────────────────────
@@ -188,6 +193,36 @@ async function sync() {
           }
         }
       }
+    }
+
+    // 2b. Fetch group standings and save them too
+    try {
+      const standings = await getStandings();
+      // Transform to compact format: {A:[{name,played,won,draw,lost,gf,ga,pts}], B:[...]}
+      const groupsData = {};
+      for (const s of standings) {
+        if (s.type !== 'TOTAL' || !s.group) continue;
+        const letter = s.group.replace('GROUP_', '');
+        groupsData[letter] = (s.table || []).map(r => ({
+          name: normTeam(r.team.shortName || r.team.name),
+          played: r.playedGames || 0,
+          won: r.won || 0,
+          draw: r.draw || 0,
+          lost: r.lost || 0,
+          gf: r.goalsFor || 0,
+          ga: r.goalsAgainst || 0,
+          pts: r.points || 0
+        }));
+      }
+      const prevStandings = JSON.stringify(state.groupStandings || {});
+      const newStandings = JSON.stringify(groupsData);
+      if (prevStandings !== newStandings && Object.keys(groupsData).length) {
+        state.groupStandings = groupsData;
+        changed = true;
+        console.log(`  📊 Clasificación de grupos actualizada (${Object.keys(groupsData).length} grupos)`);
+      }
+    } catch (e) {
+      console.log(`  (no se pudo obtener standings: ${e.message})`);
     }
 
     // 3. Commit to GitHub if anything changed
