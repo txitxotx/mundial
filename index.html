@@ -386,8 +386,8 @@ const ALL_TEAMS=[
 const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
 // ─── CONFIGURA AQUI tu repo para que TODOS los visitantes lean los datos ───
 // Cambia estos dos valores antes de subir a GitHub:
-const GH_OWNER = 'txitxotx';  // tu usuario de GitHub, ej: 'eneko'
-const GH_REPO  = 'mundial';  // nombre del repo,    ej: 'porra-mundial-2026'
+const GH_OWNER = '';  // tu usuario de GitHub, ej: 'eneko'
+const GH_REPO  = '';  // nombre del repo,    ej: 'porra-mundial-2026'
 // ──────────────────────────────────────────────────────────────────────────
 function blank(){return{password:'porra2026',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
 let S=blank();
@@ -435,30 +435,37 @@ async function ghPush(msg){
 let _pushing=false; // guard: don't pull while a push is in flight
 
 async function ghPull(){
-  // Use hardcoded constants OR admin-saved config (for flexibility)
   const c=ghCfg();
   const owner=c.owner||GH_OWNER;
   const repo=c.repo||GH_REPO;
-  if(!owner||!repo)return; // not configured at all
-  if(_pushing)return; // skip pull if we just pushed — our local copy is authoritative
+  // If not configured, show idle and stop — don't spin
+  if(!owner||!repo){setSyncUI('ok','Sin repo configurado');return;}
+  if(_pushing)return;
   try{
     const url='https://raw.githubusercontent.com/'+owner+'/'+repo+'/main/data.json?_='+Date.now();
-    const r=await fetch(url);
-    if(!r.ok){setSyncUI('err','Sin datos remotos aun');return;}
+    // 8s timeout — don't hang forever
+    const ctrl=new AbortController();
+    const tid=setTimeout(()=>ctrl.abort(),8000);
+    let r;
+    try{r=await fetch(url,{signal:ctrl.signal});}finally{clearTimeout(tid);}
+    // 404 = data.json not created yet — perfectly normal, just show local data
+    if(r.status===404){setSyncUI('ok','Listo (sin datos remotos aun)');return;}
+    if(!r.ok){setSyncUI('ok','GitHub no responde');return;}
     const d=await r.json();
-    if(!d.participants||!d.results)return; // malformed — keep local
-    // Only accept remote if it has >= participants than local (prevents overwrite after fresh push)
+    if(!d||!Array.isArray(d.participants)||!d.results){setSyncUI('ok','Listo');return;}
     if(d.participants.length>=S.participants.length){
       const pass=S.password;
-      // Merge: keep local password, take remote data
       S.participants=d.participants;
       S.results=d.results;
       S.password=pass;
       saveLocal();setSyncUI('ok','Sincronizado');
-    } else {
-      setSyncUI('ok','Local mas reciente'); // local wins, no overwrite
+    }else{
+      setSyncUI('ok','Listo');
     }
-  }catch(ex){setSyncUI('err','Sin datos remotos aun');}
+  }catch(ex){
+    // AbortError = timeout, NetworkError = offline — either way, show local data silently
+    setSyncUI('ok','Listo (sin conexion)');
+  }
 }
 
 function saveGHConfig(){
@@ -670,17 +677,20 @@ function gv(id){return(document.getElementById(id)||{}).value||'';}
 function sv(id,val){const el=document.getElementById(id);if(el)el.value=val;}
 
 /* INIT */
-loadLocal();   // 1. Load local data immediately — always the source of truth on startup
-renderAll();   // 2. Render with local data right away — no blank flash
+loadLocal();
+renderAll();
 showAdm();
-// 3. Then try to sync from GitHub in background (won't overwrite if local is newer)
+setSyncUI('ok','Listo');
+// Sync from GitHub once on load, then every 90s
 (async()=>{
-  setSyncUI('saving','Sincronizando...');
+  setSyncUI('saving','Comprobando...');
   await ghPull();
-  renderAll();  // re-render only if remote had more data
+  renderAll();
 })();
-// Auto-refresh every 90s so other devices see updates
-setInterval(async()=>{await ghPull();renderAll();},90000);
+setInterval(async()=>{
+  await ghPull();
+  renderAll();
+},90000);
 </script>
 </body>
 </html>
