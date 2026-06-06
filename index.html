@@ -134,6 +134,10 @@ nav.tabs button.active{background:var(--lime);color:var(--ink);box-shadow:0 0 24
 .match-score .sep{color:var(--muted);margin:0 4px}
 .match-score.pending{font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--muted)}
 .match-group{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);text-align:center;margin-top:2px;letter-spacing:.1em}
+.match-scorers{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:10px;}
+.match-scorers .sc-home{text-align:right;color:var(--muted)}
+.match-scorers .sc-away{text-align:left;color:var(--muted)}
+.match-scorers .sc-min{color:var(--lime);font-weight:700;margin:0 4px}
 .api-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-align:center;padding:20px;border:1px dashed var(--border);border-radius:12px;margin-bottom:20px}
 .api-note a{color:var(--lime);text-decoration:none}
 
@@ -995,11 +999,31 @@ async function renderCalendar(){
       ?'<div class="match-score">'+hg+'<span class="sep">-</span>'+ag+'</div>'
       :'<div class="match-score pending">'+m.h+'h</div>';
     const cls='match-card'+(live?' live':fin?' finished':'');
-    return '<div class="'+cls+'">'
-      +'<div class="match-team home">'+e(m.home)+'</div>'
-      +'<div style="text-align:center">'+scoreHtml
+
+    // Build scorers section
+    let scorersHtml='';
+    if(fin && res.scorers && res.scorers.length){
+      const homeScorers=res.scorers.filter(s=>s.team===m.home);
+      const awayScorers=res.scorers.filter(s=>s.team===m.away);
+      const maxRows=Math.max(homeScorers.length,awayScorers.length);
+      const rows=[];
+      for(let i=0;i<maxRows;i++){
+        const h=homeScorers[i];
+        const a=awayScorers[i];
+        rows.push(
+          '<div class="sc-home">'+(h?e(h.player)+(h.type?' ('+h.type+')':'')+' <span class="sc-min">'+h.min+'\'</span>':'')+'</div>'
+          +'<div class="sc-away">'+(a?'<span class="sc-min">'+a.min+'\'</span> '+e(a.player)+(a.type?' ('+a.type+')':''):'')+'</div>'
+        );
+      }
+      scorersHtml='<div class="match-scorers" style="grid-column:1/-1">'+rows.join('')+'</div>';
+    }
+
+    return '<div class="'+cls+'" style="display:grid;grid-template-columns:1fr auto 1fr;grid-template-areas:\'home center away\' \'scorers scorers scorers\';gap:12px;align-items:center">'
+      +'<div class="match-team home" style="grid-area:home">'+e(m.home)+'</div>'
+      +'<div style="text-align:center;grid-area:center">'+scoreHtml
       +'<div class="match-group">Grupo '+m.group+(live?' <span style="color:var(--lime)">● EN VIVO</span>':'')+'</div></div>'
-      +'<div class="match-team away">'+e(m.away)+'</div>'
+      +'<div class="match-team away" style="grid-area:away">'+e(m.away)+'</div>'
+      +scorersHtml
       +'</div>';
   }).join('');
 }

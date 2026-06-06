@@ -103,7 +103,6 @@ async function fdGet(path) {
 }
 
 async function getLiveFixtures() {
-  // football-data.org: matches with status IN_PLAY or PAUSED
   const data = await fdGet(`/competitions/${WC_CODE}/matches?status=IN_PLAY`);
   return (data.matches || []);
 }
@@ -112,6 +111,12 @@ async function getTodayFixtures() {
   const today = new Date().toISOString().slice(0, 10);
   const data = await fdGet(`/competitions/${WC_CODE}/matches?dateFrom=${today}&dateTo=${today}`);
   return (data.matches || []);
+}
+
+async function getMatchDetail(matchId) {
+  // Detailed endpoint includes goals array with scorer + minute
+  const data = await fdGet(`/matches/${matchId}`);
+  return data;
 }
 
 // ── Main sync logic ───────────────────────────────────────────
@@ -149,12 +154,38 @@ async function sync() {
       const prev = state.matchResults[key];
 
       if (hg !== null && ag !== null) {
-        const next = { hg, ag, live: live && !fin };
-        if (!prev || prev.hg !== hg || prev.ag !== ag || prev.live !== next.live) {
+        // Fetch goal scorers when match has any goals
+        let scorers = prev?.scorers || [];
+        const totalGoals = hg + ag;
+        const needScorers = totalGoals > 0 && (live || fin) && (!prev || prev.hg !== hg || prev.ag !== ag);
+
+        if (needScorers) {
+          try {
+            const detail = await getMatchDetail(f.id);
+            // football-data.org returns goals array: [{minute, scorer:{name}, team:{name}, type, ...}]
+            scorers = (detail.goals || []).map(g => ({
+              min: g.minute + (g.injuryTime ? '+' + g.injuryTime : ''),
+              player: g.scorer?.name || '?',
+              team: normTeam(g.team?.name || ''),
+              type: g.type === 'OWN' ? 'PP' : g.type === 'PENALTY' ? 'P' : ''
+            }));
+          } catch (e) {
+            console.log(`    (no se pudieron obtener goleadores: ${e.message})`);
+          }
+        }
+
+        const next = { hg, ag, live: live && !fin, scorers };
+        const changedNow = !prev || prev.hg !== hg || prev.ag !== ag || prev.live !== next.live ||
+                           JSON.stringify(prev.scorers||[]) !== JSON.stringify(scorers);
+
+        if (changedNow) {
           state.matchResults[key] = next;
           changed = true;
           const status = live ? '🔴 EN VIVO' : fin ? '✅ Final' : '⏳';
           console.log(`  ${status} ${normTeam(f.homeTeam.shortName||f.homeTeam.name)} ${hg}-${ag} ${normTeam(f.awayTeam.shortName||f.awayTeam.name)}`);
+          if (scorers.length) {
+            scorers.forEach(s => console.log(`     ⚽ ${s.min}' ${s.player} (${s.team})${s.type ? ' '+s.type : ''}`));
+          }
         }
       }
     }
