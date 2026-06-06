@@ -392,6 +392,20 @@ select option{background:var(--ink2)}
         <h3 style="margin-top:32px">Participantes</h3>
         <div class="p-list" id="admin-plist"></div>
       </div>
+    </div><!-- /admin-cols -->
+
+    <!-- MATCH RESULTS PANEL -->
+    <div class="a-card" style="margin-top:24px">
+      <h3>Resultados de partidos</h3>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:16px">
+        Introduce los resultados para que aparezcan en el calendario. Se sincronizan con GitHub autom&aacute;ticamente.
+      </div>
+      <div class="field">
+        <label>D&iacute;a</label>
+        <input type="date" id="mr-date" onchange="renderMatchAdmin()"/>
+      </div>
+      <div id="match-admin-list" style="margin-top:14px;display:flex;flex-direction:column;gap:8px"></div>
+    </div>
     </div>
   </div>
 </section>
@@ -455,7 +469,7 @@ const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
 const GH_OWNER = '';  // tu usuario de GitHub, ej: 'eneko'
 const GH_REPO  = '';  // nombre del repo,    ej: 'porra-mundial-2026'
 // ──────────────────────────────────────────────────────────────────────────
-function blank(){return{password:'porra2026',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
+function blank(){return{password:'porra2026',matchResults:{},participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
 let S=blank();
 
 function loadLocal(){try{const r=localStorage.getItem(SK);if(r)S=JSON.parse(r);}catch(e){}}
@@ -486,7 +500,7 @@ async function ghPush(msg){
   setSyncUI('saving','Publicando en GitHub...');
   try{
     let sha;try{const f=await ghReq('GET','data.json');sha=f.sha;}catch(e){}
-    const payload=JSON.stringify({participants:S.participants,results:S.results},null,2);
+    const payload=JSON.stringify({participants:S.participants,results:S.results,matchResults:S.matchResults||{}},null,2);
     const b64=btoa(unescape(encodeURIComponent(payload)));
     const body={message:msg,content:b64};if(sha)body.sha=sha;
     await ghReq('PUT','data.json',body);
@@ -685,22 +699,10 @@ function buildAdm(){
     });uc('cnt4',0,4);
     fsel('new-champ',ALL_TEAMS,'');fsel('new-runner',ALL_TEAMS,'');
   // Show existing API key status
-  const existingKey=getFdKey();
-  const fdInp=document.getElementById('fd-key-input');
-  const fdSt=document.getElementById('fd-key-status');
-  if(fdInp) fdInp.value=existingKey||'';
-  if(fdSt) fdSt.innerHTML=existingKey
-    ?'<span style="color:var(--lime)">&#10003; Key configurada y sincronizada con GitHub ('+existingKey.length+' car.)</span>'
     :'<span style="color:var(--muted)">Sin key — introdúcela y se publicará para todos los dispositivos</span>';
   });
   fsel('new-champ',ALL_TEAMS,'');fsel('new-runner',ALL_TEAMS,'');
   // Show existing API key status
-  const existingKey=getFdKey();
-  const fdInp=document.getElementById('fd-key-input');
-  const fdSt=document.getElementById('fd-key-status');
-  if(fdInp) fdInp.value=existingKey||'';
-  if(fdSt) fdSt.innerHTML=existingKey
-    ?'<span style="color:var(--lime)">&#10003; Key configurada y sincronizada con GitHub ('+existingKey.length+' car.)</span>'
     :'<span style="color:var(--muted)">Sin key — introdúcela y se publicará para todos los dispositivos</span>';
   mkPicker('res-q',ALL_TEAMS,S.results.quarters,8,()=>uc('rcnt-q',pv('res-q').length,8));
   mkPicker('res-s',ALL_TEAMS,S.results.semis,4,()=>uc('rcnt-s',pv('res-s').length,4));
@@ -769,19 +771,97 @@ function sv(id,val){const el=document.getElementById(id);if(el)el.value=val;}
 
 /* ═══ WORLD CUP 2026 GROUPS — sorteo oficial ══════════════════════════════ */
 const WC_GROUPS = {
-  A:['Mexico','Ecuador','Costa de Marfil','Curazao'],
-  B:['Canada','Uruguay','Marruecos','Portugal'],
-  C:['Argentina','Corea del Sur','Nueva Zelanda','Bosnia y Herzegovina'],
-  D:['Estados Unidos','Panama','Tunez','Escocia'],
-  E:['Alemania','Ecuador','Costa de Marfil','Curazao'],
-  F:['Japon','Senegal','Ghana','Uzbekistan'],
-  G:['Brasil','Noruega','Suecia','Arabia Saudi'],
-  H:['Francia','Belgica','Corea del Sur','Haiti'],
-  I:['Espana','Paises Bajos','Irak','Nueva Zelanda'],
-  J:['Inglaterra','Iran','Bosnia y Herzegovina','Sudafrica'],
+  A:['Mexico','Corea del Sur','Republica Checa','Sudafrica'],
+  B:['Canada','Qatar','Suiza','Bosnia y Herzegovina'],
+  C:['Brasil','Marruecos','Haiti','Escocia'],
+  D:['Estados Unidos','Panama','Tunez','Albania'],
+  E:['Alemania','Colombia','Uzbekistan','Ecuador'],
+  F:['Japon','Senegal','Paises Bajos','Noruega'],
+  G:['Francia','Belgica','Arabia Saudi','Dinamarca'],
+  H:['Portugal','Argentina','Irak','Nueva Zelanda'],
+  I:['Espana','Cabo Verde','Arabia Saudi','Uruguay'],
+  J:['Inglaterra','Iran','Jordania','Haiti'],
   K:['Portugal','Colombia','Argelia','RD Congo'],
-  L:['Alemania','Turquia','Dinamarca','Cabo Verde']
+  L:['Alemania','Turquia','Ghana','Curazao']
 };
+
+// Fixture completo fase de grupos — horarios en hora España peninsular
+const WC_FIXTURES = [
+  // JORNADA 1
+  {d:'2026-06-11',h:'21:00',home:'Mexico',away:'Sudafrica',group:'A'},
+  {d:'2026-06-12',h:'04:00',home:'Corea del Sur',away:'Republica Checa',group:'A'},
+  {d:'2026-06-12',h:'21:00',home:'Canada',away:'Bosnia y Herzegovina',group:'B'},
+  {d:'2026-06-13',h:'00:00',home:'Brasil',away:'Marruecos',group:'C'},
+  {d:'2026-06-13',h:'03:00',home:'Haiti',away:'Escocia',group:'C'},
+  {d:'2026-06-13',h:'21:00',home:'Qatar',away:'Suiza',group:'B'},
+  {d:'2026-06-14',h:'00:00',home:'Estados Unidos',away:'Paraguay',group:'D'},
+  {d:'2026-06-14',h:'03:00',home:'Alemania',away:'Ecuador',group:'E'},
+  {d:'2026-06-14',h:'21:00',home:'Senegal',away:'Noruega',group:'F'},
+  {d:'2026-06-15',h:'00:00',home:'Paises Bajos',away:'Japon',group:'F'},
+  {d:'2026-06-15',h:'03:00',home:'Panama',away:'Albania',group:'D'},
+  {d:'2026-06-15',h:'18:00',home:'Espana',away:'Cabo Verde',group:'I'},
+  {d:'2026-06-15',h:'21:00',home:'Colombia',away:'Uzbekistan',group:'E'},
+  {d:'2026-06-16',h:'00:00',home:'Belgica',away:'Dinamarca',group:'G'},
+  {d:'2026-06-16',h:'03:00',home:'Francia',away:'Arabia Saudi',group:'G'},
+  {d:'2026-06-16',h:'18:00',home:'Tunez',away:'Panama',group:'D'},
+  {d:'2026-06-16',h:'21:00',home:'Argentina',away:'Irak',group:'H'},
+  {d:'2026-06-17',h:'00:00',home:'Portugal',away:'Nueva Zelanda',group:'H'},
+  {d:'2026-06-17',h:'03:00',home:'Jordania',away:'Haiti',group:'J'},
+  {d:'2026-06-17',h:'18:00',home:'Ghana',away:'Curazao',group:'L'},
+  {d:'2026-06-17',h:'21:00',home:'Turquia',away:'Alemania',group:'L'},
+  {d:'2026-06-18',h:'00:00',home:'Iran',away:'Inglaterra',group:'J'},
+  {d:'2026-06-18',h:'03:00',home:'Argelia',away:'RD Congo',group:'K'},
+  // JORNADA 2
+  {d:'2026-06-18',h:'18:00',home:'Republica Checa',away:'Sudafrica',group:'A'},
+  {d:'2026-06-18',h:'21:00',home:'Suiza',away:'Bosnia y Herzegovina',group:'B'},
+  {d:'2026-06-19',h:'00:00',home:'Canada',away:'Qatar',group:'B'},
+  {d:'2026-06-19',h:'03:00',home:'Mexico',away:'Corea del Sur',group:'A'},
+  {d:'2026-06-19',h:'18:00',home:'Brasil',away:'Haiti',group:'C'},
+  {d:'2026-06-19',h:'21:00',home:'Arabia Saudi',away:'Espana',group:'I'},
+  {d:'2026-06-20',h:'00:00',home:'Escocia',away:'Marruecos',group:'C'},
+  {d:'2026-06-20',h:'03:00',home:'Ecuador',away:'Colombia',group:'E'},
+  {d:'2026-06-20',h:'18:00',home:'Uzbekistan',away:'Alemania',group:'E'},
+  {d:'2026-06-20',h:'21:00',home:'Albania',away:'Estados Unidos',group:'D'},
+  {d:'2026-06-21',h:'00:00',home:'Noruega',away:'Paises Bajos',group:'F'},
+  {d:'2026-06-21',h:'03:00',home:'Paraguay',away:'Tunez',group:'D'},
+  {d:'2026-06-21',h:'18:00',home:'Espana',away:'Arabia Saudi',group:'I'},
+  {d:'2026-06-21',h:'21:00',home:'Dinamarca',away:'Francia',group:'G'},
+  {d:'2026-06-22',h:'00:00',home:'Arabia Saudi',away:'Belgica',group:'G'},
+  {d:'2026-06-22',h:'03:00',home:'Japon',away:'Senegal',group:'F'},
+  {d:'2026-06-22',h:'18:00',home:'Irak',away:'Portugal',group:'H'},
+  {d:'2026-06-22',h:'21:00',home:'Nueva Zelanda',away:'Argentina',group:'H'},
+  {d:'2026-06-23',h:'00:00',home:'Colombia',away:'Argelia',group:'K'},
+  {d:'2026-06-23',h:'03:00',home:'Inglaterra',away:'Jordania',group:'J'},
+  {d:'2026-06-23',h:'18:00',home:'RD Congo',away:'Portugal',group:'K'},
+  {d:'2026-06-23',h:'21:00',home:'Curazao',away:'Turquia',group:'L'},
+  {d:'2026-06-24',h:'00:00',home:'Ghana',away:'Alemania',group:'L'},
+  {d:'2026-06-24',h:'03:00',home:'Haiti',away:'Iran',group:'J'},
+  // JORNADA 3 (simultáneos)
+  {d:'2026-06-25',h:'03:00',home:'Republica Checa',away:'Mexico',group:'A'},
+  {d:'2026-06-25',h:'03:00',home:'Sudafrica',away:'Corea del Sur',group:'A'},
+  {d:'2026-06-24',h:'21:00',home:'Suiza',away:'Canada',group:'B'},
+  {d:'2026-06-24',h:'21:00',home:'Bosnia y Herzegovina',away:'Qatar',group:'B'},
+  {d:'2026-06-25',h:'00:00',home:'Escocia',away:'Brasil',group:'C'},
+  {d:'2026-06-25',h:'00:00',home:'Marruecos',away:'Haiti',group:'C'},
+  {d:'2026-06-26',h:'00:00',home:'Estados Unidos',away:'Tunez',group:'D'},
+  {d:'2026-06-26',h:'00:00',home:'Albania',away:'Panama',group:'D'},
+  {d:'2026-06-26',h:'21:00',home:'Alemania',away:'Colombia',group:'E'},
+  {d:'2026-06-26',h:'21:00',home:'Ecuador',away:'Uzbekistan',group:'E'},
+  {d:'2026-06-27',h:'00:00',home:'Paises Bajos',away:'Senegal',group:'F'},
+  {d:'2026-06-27',h:'00:00',home:'Noruega',away:'Japon',group:'F'},
+  {d:'2026-06-27',h:'21:00',home:'Francia',away:'Belgica',group:'G'},
+  {d:'2026-06-27',h:'21:00',home:'Dinamarca',away:'Arabia Saudi',group:'G'},
+  {d:'2026-06-28',h:'00:00',home:'Argentina',away:'Portugal',group:'H'},
+  {d:'2026-06-28',h:'00:00',home:'Nueva Zelanda',away:'Irak',group:'H'},
+  {d:'2026-06-26',h:'03:00',home:'Espana',away:'Uruguay',group:'I'},
+  {d:'2026-06-26',h:'03:00',home:'Cabo Verde',away:'Arabia Saudi',group:'I'},
+  {d:'2026-06-27',h:'03:00',home:'Iran',away:'Jordania',group:'J'},
+  {d:'2026-06-27',h:'03:00',home:'Inglaterra',away:'Haiti',group:'J'},
+  {d:'2026-06-28',h:'21:00',home:'Portugal',away:'Argelia',group:'K'},
+  {d:'2026-06-28',h:'21:00',home:'Colombia',away:'RD Congo',group:'K'},
+  {d:'2026-06-28',h:'03:00',home:'Alemania',away:'Curazao',group:'L'},
+  {d:'2026-06-28',h:'03:00',home:'Turquia',away:'Ghana',group:'L'},
+];
 
 /* ═══ FOOTBALL-DATA.ORG API ═════════════════════════════════════════════ */
 async function saveFdKey(){
@@ -827,14 +907,7 @@ async function fetchGroups(){
   _groupsCache=d; _groupsTs=Date.now();
   return d;
 }
-let _gamesCache={};
-async function fetchGames(date){
-  if(_gamesCache[date] && Date.now()-_gamesCache[date].ts<60*1000) return _gamesCache[date].d;
-  const d=await wc26Get('/games');
-  // cache all games, filter by date on render
-  _gamesCache[date]={d,ts:Date.now()};
-  return d;
-}
+
 
 function renderGroups(apiData){
   const el=document.getElementById('groups-grid'); if(!el) return;
@@ -885,18 +958,11 @@ function renderGroups(apiData){
 
 /* ── Calendar ──────────────────────────────────────────────────────── */
 let _calDate=new Date();
-let _fixturesCache={};
 
 function calDateStr(d){ return d.toISOString().slice(0,10); }
 function calNav(dir){ _calDate=new Date(_calDate); _calDate.setDate(_calDate.getDate()+dir); renderCalendar(); }
 function calGoToday(){ _calDate=new Date(); renderCalendar(); }
 
-async function fetchFixtures(dateStr){
-  if(_fixturesCache[dateStr]) return _fixturesCache[dateStr];
-  const d=await fdGet(wcPath('/matches?dateFrom='+dateStr+'&dateTo='+dateStr));
-  _fixturesCache[dateStr]=d;
-  return d;
-}
 
 async function renderCalendar(){
   const el=document.getElementById('cal-body');
@@ -905,74 +971,101 @@ async function renderCalendar(){
   if(!el) return;
 
   const ds=calDateStr(_calDate);
-  const opts={weekday:'long',day:'numeric',month:'long'};
-  const readable=_calDate.toLocaleDateString('es-ES',opts);
-  if(lbl) lbl.textContent=readable;
+  if(lbl) lbl.textContent=_calDate.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
   const pill=document.getElementById('cal-date-pill');
   if(pill) pill.textContent=ds===calDateStr(new Date())?'HOY':ds;
+  if(note) note.style.display='none';
 
-  const _key=getFdKey();
-  if(!_key){
-    if(note) note.style.display='block';
-    el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px;line-height:2">Sin API key.<br><span style="font-size:10px">Ve a Admin → API de Resultados</span></div>';
+  const results=S.matchResults||{};
+  const games=WC_FIXTURES.filter(m=>m.d===ds);
+
+  if(!games.length){
+    const cur=new Date(ds);
+    const msg=(cur>=new Date('2026-06-11')&&cur<=new Date('2026-07-19'))
+      ?'No hay partidos de fase de grupos este día.'
+      :'No hay partidos del Mundial este día.';
+    el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px">'+msg+'</div>';
     return;
   }
-  if(note) note.style.display='none';
-  el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:20px">Cargando partidos...</div>';
 
-  try{
-    const data=await fetchFixtures(ds);
-    const matches=data.matches||[];
-    if(!matches.length){
-      el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px">No hay partidos este dia.</div>';
-      return;
-    }
-    el.innerHTML=matches.map(m=>{
-      const status=m.status; // SCHEDULED LIVE IN_PLAY PAUSED FINISHED POSTPONED
-      const home=m.homeTeam.shortName||m.homeTeam.name;
-      const away=m.awayTeam.shortName||m.awayTeam.name;
-      const hg=m.score&&m.score.fullTime?m.score.fullTime.home:null;
-      const ag=m.score&&m.score.fullTime?m.score.fullTime.away:null;
-      const live=status==='IN_PLAY'||status==='PAUSED'||status==='LIVE';
-      const fin=status==='FINISHED';
-      const kickoff=m.utcDate?new Date(m.utcDate).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Madrid'}):'';
-      const group=m.group?m.group.replace('GROUP_','Grupo '):'';
-
-      let scoreHtml;
-      if(hg!==null&&ag!==null){
-        scoreHtml='<div class="match-score">'+hg+'<span class="sep">-</span>'+ag+'</div>';
-      } else {
-        scoreHtml='<div class="match-score pending">'+kickoff+'</div>';
-      }
-      const cls='match-card'+(live?' live':fin?' finished':'');
-      return '<div class="'+cls+'">'
-        +'<div class="match-team home">'+e(home)+'</div>'
-        +'<div><div>'+scoreHtml+'</div><div class="match-group">'+e(group)+(live?' <span style="color:var(--lime)">EN VIVO</span>':'')+'</div></div>'
-        +'<div class="match-team away">'+e(away)+'</div>'
-        +'</div>';
-    }).join('');
-  }catch(ex){
-    let msg='';
-    if(ex.name==='AbortError'){
-      msg='Timeout: el proxy no responde.<br>Verifica que <code>api/football.js</code> existe en tu repo y que Vercel ha redesplegado.';
-    } else {
-      msg='Error: '+ex.message;
-      if(ex.httpStatus) msg+=' (HTTP '+ex.httpStatus+')';
-      if(ex.proxyDetail&&ex.proxyDetail.hint) msg+='<br><span style="color:var(--muted)">'+ex.proxyDetail.hint+'</span>';
-    }
-    el.innerHTML='<div style="text-align:center;color:var(--red);font-family:JetBrains Mono,monospace;padding:40px;line-height:2">'+msg+'</div>';
-  }
+  el.innerHTML=games.map(m=>{
+    const key=m.d+'_'+m.home+'_'+m.away;
+    const res=results[key]||{};
+    const hg=res.hg!==undefined?res.hg:null;
+    const ag=res.ag!==undefined?res.ag:null;
+    const live=res.live||false;
+    const fin=hg!==null&&ag!==null;
+    const scoreHtml=fin
+      ?'<div class="match-score">'+hg+'<span class="sep">-</span>'+ag+'</div>'
+      :'<div class="match-score pending">'+m.h+'h</div>';
+    const cls='match-card'+(live?' live':fin?' finished':'');
+    return '<div class="'+cls+'">'
+      +'<div class="match-team home">'+e(m.home)+'</div>'
+      +'<div style="text-align:center">'+scoreHtml
+      +'<div class="match-group">Grupo '+m.group+(live?' <span style="color:var(--lime)">● EN VIVO</span>':'')+'</div></div>'
+      +'<div class="match-team away">'+e(m.away)+'</div>'
+      +'</div>';
+  }).join('');
 }
 
 async function refreshMundial(){
+  renderCalendar(); // always works — hardcoded data
   try{
     const d=await fetchGroups();
     renderGroups(d);
   }catch(ex){
     console.warn('Groups API error:', ex.message);
-    renderGroups(null);
+    renderGroups(null); // fallback to hardcoded
   }
+}
+
+
+/* ═══ MATCH RESULTS ADMIN ══════════════════════════════════════════════ */
+function renderMatchAdmin(){
+  const el=document.getElementById('match-admin-list'); if(!el) return;
+  const dateEl=document.getElementById('mr-date');
+  const ds=dateEl?dateEl.value:'';
+  if(!ds){el.innerHTML='<div style="color:var(--muted);font-size:12px;font-family:JetBrains Mono,monospace">Selecciona un d&iacute;a.</div>';return;}
+  const games=WC_FIXTURES.filter(m=>m.d===ds);
+  if(!games.length){el.innerHTML='<div style="color:var(--muted);font-size:12px;font-family:JetBrains Mono,monospace">No hay partidos este d&iacute;a.</div>';return;}
+  const results=S.matchResults||{};
+  el.innerHTML=games.map(m=>{
+    const key=m.d+'_'+m.home+'_'+m.away;
+    const res=results[key]||{};
+    return '<div style="background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:10px;padding:12px 14px">'
+      +'<div style="font-weight:700;margin-bottom:8px;font-size:13px">'+e(m.home)+' vs '+e(m.away)
+      +' <span style="font-family:JetBrains Mono,monospace;font-size:10px;color:var(--muted)">Grupo '+m.group+' · '+m.h+'h</span></div>'
+      +'<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">'
+      +'<input type="number" min="0" max="30" id="hg_'+key+'" placeholder="Local" value="'+(res.hg!==undefined?res.hg:'')+'" style="width:70px;text-align:center"/>'
+      +'<span style="color:var(--muted);font-size:18px">-</span>'
+      +'<input type="number" min="0" max="30" id="ag_'+key+'" placeholder="Visitante" value="'+(res.ag!==undefined?res.ag:'')+'" style="width:70px;text-align:center"/>'
+      +'<label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);text-transform:none;letter-spacing:0;margin:0">'
+      +'<input type="checkbox" id="live_'+key+'"'+(res.live?' checked':'')+' style="width:auto;accent-color:var(--lime)"/> EN VIVO</label>'
+      +'<button class="btn btn-lime btn-sm" onclick="saveMatchResult(''+key+'',''+m.home+'',''+m.away+'')">Guardar</button>'
+      +'</div></div>';
+  }).join('');
+}
+
+async function saveMatchResult(key,home,away){
+  const hgEl=document.getElementById('hg_'+key);
+  const agEl=document.getElementById('ag_'+key);
+  const liveEl=document.getElementById('live_'+key);
+  const hg=hgEl&&hgEl.value!==''?parseInt(hgEl.value):undefined;
+  const ag=agEl&&agEl.value!==''?parseInt(agEl.value):undefined;
+  const live=liveEl?liveEl.checked:false;
+  if(!S.matchResults) S.matchResults={};
+  if(hg!==undefined&&ag!==undefined){
+    S.matchResults[key]={hg,ag,live};
+  } else {
+    delete S.matchResults[key];
+  }
+  saveLocal();
   renderCalendar();
+  try{
+    await ghPush('Match result: '+home+' vs '+away);
+  }catch(ex){
+    alert('Local OK, fallo GitHub:\n'+ex.message);
+  }
 }
 
 /* INIT */
@@ -980,8 +1073,8 @@ loadLocal();
 renderAll();
 showAdm();
 setSyncUI('ok','Listo');
-renderGroups(null); // render groups with hardcoded data immediately
-renderCalendar();   // render calendar (will show config note if no API key)
+renderGroups(null); // hardcoded groups shown immediately
+renderCalendar();   // hardcoded calendar — always works
 // Sync from GitHub once on load, then every 90s
 (async()=>{
   setSyncUI('saving','Comprobando...');
