@@ -259,9 +259,8 @@ select option{background:var(--ink2)}
     <button class="btn btn-ghost btn-sm" onclick="calGoToday()">Hoy</button>
   </div>
   <div id="api-note" class="api-note" style="display:none">
-    Para ver resultados en tiempo real, el admin debe configurar una API key gratuita de
-    <a href="https://www.football-data.org/client/register" target="_blank">football-data.org</a>
-    en el panel Admin.
+    Para ver resultados en tiempo real se necesita la variable de entorno <code>FD_API_KEY</code> en Vercel.
+    Reg&iacute;strate gratis en <a href="https://www.football-data.org/client/register" target="_blank">football-data.org</a> y s&iacute;gue las instrucciones en Admin.
   </div>
   <div id="cal-body"></div>
 
@@ -332,17 +331,16 @@ select option{background:var(--ink2)}
 
     <!-- Football API -->
     <div class="gh-card" style="border-color:rgba(78,255,212,.15)">
-      <h3 style="color:var(--cyan)">&#9917; API de Resultados (football-data.org)</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-        <div class="field"><label>API Key (gratuita)</label><input type="password" id="fd-key" placeholder="Tu API key de football-data.org"/></div>
-        <div class="field" style="display:flex;align-items:flex-end">
-          <button class="btn btn-lime btn-sm" onclick="saveFdKey()" style="margin-top:6px">Guardar key</button>
-        </div>
-      </div>
-      <div class="hint" style="margin-top:10px">
-        Reg&iacute;strate gratis en <a href="https://www.football-data.org/client/register" target="_blank" style="color:var(--cyan)">football-data.org</a>
-        y pega tu API key aqu&iacute;. Se guarda solo en tu navegador.<br>
-        Con la key configurada, grupos y calendario se actualizan autom&aacute;ticamente en tiempo real.
+      <h3 style="color:var(--cyan)">&#9917; API de Resultados en tiempo real</h3>
+      <div class="hint" style="margin-top:0;color:var(--muted);line-height:1.9">
+        Los resultados se obtienen v&iacute;a proxy serverless (sin CORS). Para activarlos:<br>
+        <strong style="color:var(--text)">1.</strong> Reg&iacute;strate gratis en
+        <a href="https://www.football-data.org/client/register" target="_blank" style="color:var(--cyan)">football-data.org</a>
+        y copia tu API key.<br>
+        <strong style="color:var(--text)">2.</strong> En Vercel &rarr; tu proyecto &rarr; <strong style="color:var(--text)">Settings &rarr; Environment Variables</strong>.<br>
+        <strong style="color:var(--text)">3.</strong> A&ntilde;ade: <code style="color:var(--lime)">FD_API_KEY</code> = tu key &rarr; Save &rarr; Redeploy.<br>
+        <strong style="color:var(--text)">4.</strong> Aseg&uacute;rate de que el repo tiene la carpeta <code style="color:var(--lime)">api/football.js</code> subida.<br>
+        Una vez configurado, grupos y calendario se actualizan autom&aacute;ticamente.
       </div>
     </div>
     <!-- Toolbar -->
@@ -458,8 +456,8 @@ const ALL_TEAMS=[
 const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
 // ─── CONFIGURA AQUI tu repo para que TODOS los visitantes lean los datos ───
 // Cambia estos dos valores antes de subir a GitHub:
-const GH_OWNER = 'txitxotx';  // tu usuario de GitHub, ej: 'eneko'
-const GH_REPO  = 'mundial';  // nombre del repo,    ej: 'porra-mundial-2026'
+const GH_OWNER = '';  // tu usuario de GitHub, ej: 'eneko'
+const GH_REPO  = '';  // nombre del repo,    ej: 'porra-mundial-2026'
 // ──────────────────────────────────────────────────────────────────────────
 function blank(){return{password:'porra2026',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
 let S=blank();
@@ -768,24 +766,21 @@ const WC_GROUPS = {
 };
 
 /* ═══ FOOTBALL-DATA.ORG API ═════════════════════════════════════════════ */
-function getFdKey(){ try{return localStorage.getItem(FD_KEY)||'';}catch(e){return '';} }
-function saveFdKey(){
-  const k=gv('fd-key').trim();
-  if(!k){alert('Pega tu API key primero');return;}
-  localStorage.setItem(FD_KEY,k);
-  alert('API key guardada. Recarga la pestana Mundial.');
-}
+// API key lives in Vercel env var FD_API_KEY — not in the browser
+function saveFdKey(){ alert('La API key se configura en las variables de entorno de Vercel (FD_API_KEY), no aqui.'); }
 
-const FD_BASE='https://api.football-data.org/v4';
 const WC_ID=2000; // football-data.org competition ID for FIFA World Cup
 
 async function fdGet(path){
-  const key=getFdKey();
-  if(!key) throw new Error('sin_key');
+  // Calls our Vercel proxy at /api/football — avoids CORS and keeps API key server-side
   const ctrl=new AbortController();
-  const tid=setTimeout(()=>ctrl.abort(),8000);
+  const tid=setTimeout(()=>ctrl.abort(),10000);
   try{
-    const r=await fetch(FD_BASE+path,{headers:{'X-Auth-Token':key},signal:ctrl.signal});
+    const r=await fetch('/api/football?path='+encodeURIComponent(path),{signal:ctrl.signal});
+    if(r.status===500){
+      // Proxy running but FD_API_KEY not set in Vercel env vars
+      throw new Error('sin_key');
+    }
     if(!r.ok) throw new Error('HTTP '+r.status);
     return r.json();
   }finally{clearTimeout(tid);}
@@ -922,7 +917,7 @@ async function renderCalendar(){
     }).join('');
   }catch(ex){
     if(ex.message==='sin_key'){
-      el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px">Sin API key configurada.</div>';
+      el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px">Configura FD_API_KEY en las variables de entorno de Vercel.</div>';
     } else {
       el.innerHTML='<div style="text-align:center;color:var(--red);font-family:JetBrains Mono,monospace;padding:40px">Error al cargar: '+ex.message+'</div>';
     }
