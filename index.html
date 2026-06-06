@@ -456,8 +456,8 @@ const ALL_TEAMS=[
 const SK='porra2026_v3',GK='porra2026_gh3',SEK='porra2026_adm';
 // ─── CONFIGURA AQUI tu repo para que TODOS los visitantes lean los datos ───
 // Cambia estos dos valores antes de subir a GitHub:
-const GH_OWNER = 'txitxotx';  // tu usuario de GitHub, ej: 'eneko'
-const GH_REPO  = 'mundial';  // nombre del repo,    ej: 'porra-mundial-2026'
+const GH_OWNER = '';  // tu usuario de GitHub, ej: 'eneko'
+const GH_REPO  = '';  // nombre del repo,    ej: 'porra-mundial-2026'
 // ──────────────────────────────────────────────────────────────────────────
 function blank(){return{password:'porra2026',participants:[],results:{quarters:[],semis:[],finals:[],champion:'',runnerUp:'',topScorer:'',mvp:''}};}
 let S=blank();
@@ -769,7 +769,9 @@ const WC_GROUPS = {
 // API key lives in Vercel env var FD_API_KEY — not in the browser
 function saveFdKey(){ alert('La API key se configura en las variables de entorno de Vercel (FD_API_KEY), no aqui.'); }
 
-const WC_ID=2000; // football-data.org competition ID for FIFA World Cup
+const WC_CODE='WC'; // football-data.org uses competition code, not ID
+// Path builder — football-data.org v4 accepts /competitions/WC/...
+function wcPath(sub){ return '/competitions/'+WC_CODE+sub; }
 
 async function fdGet(path){
   // Calls our Vercel proxy at /api/football — avoids CORS and keeps API key server-side
@@ -790,7 +792,7 @@ async function fdGet(path){
 let _standingsCache=null, _standingsTs=0;
 async function fetchStandings(){
   if(_standingsCache && Date.now()-_standingsTs<5*60*1000) return _standingsCache;
-  const d=await fdGet('/competitions/'+WC_ID+'/standings?season=2026');
+  const d=await fdGet(wcPath('/standings?season=2026'));
   _standingsCache=d; _standingsTs=Date.now();
   return d;
 }
@@ -857,7 +859,7 @@ function calGoToday(){ _calDate=new Date(); renderCalendar(); }
 
 async function fetchFixtures(dateStr){
   if(_fixturesCache[dateStr]) return _fixturesCache[dateStr];
-  const d=await fdGet('/competitions/'+WC_ID+'/matches?dateFrom='+dateStr+'&dateTo='+dateStr);
+  const d=await fdGet(wcPath('/matches?dateFrom='+dateStr+'&dateTo='+dateStr));
   _fixturesCache[dateStr]=d;
   return d;
 }
@@ -875,14 +877,8 @@ async function renderCalendar(){
   const pill=document.getElementById('cal-date-pill');
   if(pill) pill.textContent=ds===calDateStr(new Date())?'HOY':ds;
 
-  const key=getFdKey();
-  if(!key){
-    if(note) note.style.display='block';
-    el.innerHTML='<div style="color:var(--muted);font-family:JetBrains Mono,monospace;text-align:center;padding:40px">Configura la API key en Admin para ver partidos.</div>';
-    return;
-  }
   if(note) note.style.display='none';
-  el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:20px">Cargando...</div>';
+  el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:20px">Cargando partidos...</div>';
 
   try{
     const data=await fetchFixtures(ds);
@@ -917,9 +913,11 @@ async function renderCalendar(){
     }).join('');
   }catch(ex){
     if(ex.message==='sin_key'){
-      el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px">Configura FD_API_KEY en las variables de entorno de Vercel.</div>';
+      el.innerHTML='<div style="text-align:center;color:var(--muted);font-family:JetBrains Mono,monospace;padding:40px">Configura FD_API_KEY en Vercel → Environment Variables.</div>';
+    } else if(ex.name==='AbortError'){
+      el.innerHTML='<div style="text-align:center;color:var(--red);font-family:JetBrains Mono,monospace;padding:40px">Timeout — el proxy no responde. Comprueba que api/football.js esta en el repo y que Vercel ha redesplegado.</div>';
     } else {
-      el.innerHTML='<div style="text-align:center;color:var(--red);font-family:JetBrains Mono,monospace;padding:40px">Error al cargar: '+ex.message+'</div>';
+      el.innerHTML='<div style="text-align:center;color:var(--red);font-family:JetBrains Mono,monospace;padding:40px;line-height:1.8">Error: '+ex.message+'<br><span style="font-size:10px;color:var(--muted)">Abre DevTools → Network → busca /api/football para ver la respuesta completa</span></div>';
     }
   }
 }
@@ -930,6 +928,7 @@ async function refreshMundial(){
     const d=await fetchStandings();
     renderGroups(d);
   }catch(ex){
+    console.warn('Standings API error:', ex.message);
     renderGroups(null); // fallback to hardcoded
   }
   renderCalendar();
