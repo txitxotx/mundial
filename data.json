@@ -179,6 +179,42 @@
       "runnerUp": "Portugal",
       "topScorer": "Harry Kane",
       "mvp": "Lamine Yamal"
+    },
+    {
+      "id": "p_1781153906929_2lnmd",
+      "name": "MANEX",
+      "picks16": [
+        "Alemania",
+        "Argentina",
+        "Belgica",
+        "Brasil",
+        "Corea del Sur",
+        "Croacia",
+        "Egipto",
+        "Espana",
+        "Francia",
+        "Inglaterra",
+        "Mexico",
+        "Noruega",
+        "Paises Bajos",
+        "Portugal",
+        "Suiza",
+        "Turquia"
+      ],
+      "picks4": [
+        "Argentina",
+        "Brasil",
+        "Espana",
+        "Francia"
+      ],
+      "picks2": [
+        "Brasil",
+        "Espana"
+      ],
+      "champion": "Brasil",
+      "runnerUp": "Espana",
+      "topScorer": "Kylian Mbappé",
+      "mvp": "Lamine Yamal"
     }
   ],
   "results": {
