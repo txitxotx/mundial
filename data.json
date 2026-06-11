@@ -230,6 +230,26 @@
   "groupStandings": {
     "Group A": [
       {
+        "name": "Mexico",
+        "played": 1,
+        "won": 1,
+        "draw": 0,
+        "lost": 0,
+        "gf": 1,
+        "ga": 0,
+        "pts": 3
+      },
+      {
+        "name": "Korea Republic",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
         "name": "Czechia",
         "played": 0,
         "won": 0,
@@ -240,33 +260,13 @@
         "pts": 0
       },
       {
-        "name": "Mexico",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
         "name": "Sudafrica",
-        "played": 0,
+        "played": 1,
         "won": 0,
         "draw": 0,
-        "lost": 0,
+        "lost": 1,
         "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Korea Republic",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
+        "ga": 1,
         "pts": 0
       }
     ],
@@ -324,7 +324,7 @@
         "pts": 0
       },
       {
-        "name": "Marruecos",
+        "name": "Haiti",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -334,7 +334,7 @@
         "pts": 0
       },
       {
-        "name": "Haiti",
+        "name": "Marruecos",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -356,17 +356,7 @@
     ],
     "Group D": [
       {
-        "name": "Turquia",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Estados Unidos",
+        "name": "Australia",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -386,7 +376,17 @@
         "pts": 0
       },
       {
-        "name": "Australia",
+        "name": "Turquia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Estados Unidos",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -398,16 +398,6 @@
     ],
     "Group E": [
       {
-        "name": "Alemania",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
         "name": "Curaçao",
         "played": 0,
         "won": 0,
@@ -418,7 +408,7 @@
         "pts": 0
       },
       {
-        "name": "Ivory Coast",
+        "name": "Alemania",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -436,11 +426,21 @@
         "gf": 0,
         "ga": 0,
         "pts": 0
+      },
+      {
+        "name": "Ivory Coast",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
       }
     ],
     "Group F": [
       {
-        "name": "Sweden",
+        "name": "Japon",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -460,7 +460,7 @@
         "pts": 0
       },
       {
-        "name": "Japon",
+        "name": "Sweden",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -482,7 +482,7 @@
     ],
     "Group G": [
       {
-        "name": "Belgica",
+        "name": "Egypt",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -492,7 +492,7 @@
         "pts": 0
       },
       {
-        "name": "Egypt",
+        "name": "Belgica",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -524,16 +524,6 @@
     ],
     "Group H": [
       {
-        "name": "Espana",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
         "name": "Cabo Verde",
         "played": 0,
         "won": 0,
@@ -545,6 +535,16 @@
       },
       {
         "name": "Arabia Saudi",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Espana",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -566,16 +566,6 @@
     ],
     "Group I": [
       {
-        "name": "Irak",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
         "name": "Francia",
         "played": 0,
         "won": 0,
@@ -586,7 +576,7 @@
         "pts": 0
       },
       {
-        "name": "Senegal",
+        "name": "Irak",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -597,6 +587,16 @@
       },
       {
         "name": "Noruega",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Senegal",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -660,6 +660,16 @@
         "pts": 0
       },
       {
+        "name": "Colombia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
         "name": "Portugal",
         "played": 0,
         "won": 0,
@@ -671,16 +681,6 @@
       },
       {
         "name": "Uzbekistan",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Colombia",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -702,7 +702,7 @@
         "pts": 0
       },
       {
-        "name": "Croacia",
+        "name": "Ghana",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -712,7 +712,7 @@
         "pts": 0
       },
       {
-        "name": "Ghana",
+        "name": "Croacia",
         "played": 0,
         "won": 0,
         "draw": 0,
