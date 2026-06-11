@@ -226,7 +226,14 @@
     "topScorer": "",
     "mvp": ""
   },
-  "matchResults": {},
+  "matchResults": {
+    "2026-06-11_Mexico_Sudafrica": {
+      "hg": 2,
+      "ag": 0,
+      "live": false,
+      "scorers": []
+    }
+  },
   "groupStandings": {
     "Group A": [
       {
@@ -235,7 +242,7 @@
         "won": 1,
         "draw": 0,
         "lost": 0,
-        "gf": 1,
+        "gf": 2,
         "ga": 0,
         "pts": 3
       },
@@ -266,7 +273,7 @@
         "draw": 0,
         "lost": 1,
         "gf": 0,
-        "ga": 1,
+        "ga": 2,
         "pts": 0
       }
     ],
@@ -608,16 +615,6 @@
     ],
     "Group J": [
       {
-        "name": "Argentina",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
         "name": "Argelia",
         "played": 0,
         "won": 0,
@@ -628,7 +625,7 @@
         "pts": 0
       },
       {
-        "name": "Austria",
+        "name": "Argentina",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -639,6 +636,16 @@
       },
       {
         "name": "Jordania",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Austria",
         "played": 0,
         "won": 0,
         "draw": 0,
