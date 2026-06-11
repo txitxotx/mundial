@@ -119,5 +119,510 @@
     "mvp": ""
   },
   "matchResults": {},
-  "groupStandings": {}
+  "groupStandings": {
+    "Group A": [
+      {
+        "name": "Czechia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Mexico",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Sudafrica",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Korea Republic",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group B": [
+      {
+        "name": "Bosnia-H.",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Canada",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Qatar",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Suiza",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group C": [
+      {
+        "name": "Brasil",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Marruecos",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Haiti",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Escocia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group D": [
+      {
+        "name": "Turquia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Estados Unidos",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Paraguay",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Australia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group E": [
+      {
+        "name": "Alemania",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Curaçao",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Ivory Coast",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Ecuador",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group F": [
+      {
+        "name": "Sweden",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Paises Bajos",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Japon",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Tunez",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group G": [
+      {
+        "name": "Belgica",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Egypt",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Iran",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Nueva Zelanda",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group H": [
+      {
+        "name": "Espana",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Cabo Verde",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Arabia Saudi",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Uruguay",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group I": [
+      {
+        "name": "Irak",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Francia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Senegal",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Noruega",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group J": [
+      {
+        "name": "Argentina",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Argelia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Austria",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Jordania",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group K": [
+      {
+        "name": "Congo DR",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Portugal",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Uzbekistan",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Colombia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ],
+    "Group L": [
+      {
+        "name": "Inglaterra",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Croacia",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Ghana",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Panama",
+        "played": 0,
+        "won": 0,
+        "draw": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 0
+      }
+    ]
+  }
 }
