@@ -107,6 +107,42 @@
       "runnerUp": "Argentina",
       "topScorer": "Michael Akpovie Olise",
       "mvp": "Florian Richard Wirtz"
+    },
+    {
+      "id": "p_1781153281966_jvtj6",
+      "name": "DIANA",
+      "picks16": [
+        "Alemania",
+        "Argentina",
+        "Belgica",
+        "Brasil",
+        "Croacia",
+        "Espana",
+        "Francia",
+        "Inglaterra",
+        "Japon",
+        "Marruecos",
+        "Paises Bajos",
+        "Paraguay",
+        "Portugal",
+        "Qatar",
+        "Senegal",
+        "Uruguay"
+      ],
+      "picks4": [
+        "Francia",
+        "Inglaterra",
+        "Marruecos",
+        "Portugal"
+      ],
+      "picks2": [
+        "Francia",
+        "Marruecos"
+      ],
+      "champion": "Francia",
+      "runnerUp": "Marruecos",
+      "topScorer": "Ousmane Dembélé",
+      "mvp": "Michael Akpovie Olise"
     }
   ],
   "results": {
