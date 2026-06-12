@@ -238,6 +238,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-12_Canada_Bosnia-H.": {
+      "hg": 0,
+      "ag": 1,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -286,23 +292,13 @@
     "Group B": [
       {
         "name": "Bosnia-H.",
-        "played": 0,
-        "won": 0,
+        "played": 1,
+        "won": 1,
         "draw": 0,
         "lost": 0,
-        "gf": 0,
+        "gf": 1,
         "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Canada",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "pts": 3
       },
       {
         "name": "Qatar",
@@ -322,6 +318,16 @@
         "lost": 0,
         "gf": 0,
         "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Canada",
+        "played": 1,
+        "won": 0,
+        "draw": 0,
+        "lost": 1,
+        "gf": 0,
+        "ga": 1,
         "pts": 0
       }
     ],
