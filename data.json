@@ -248,23 +248,23 @@
       },
       {
         "name": "Korea Republic",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Czechia",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Sudafrica",
