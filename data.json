@@ -252,7 +252,7 @@
       "scorers": []
     },
     "2026-06-13_Qatar_Suiza": {
-      "hg": 0,
+      "hg": 1,
       "ag": 1,
       "live": false,
       "scorers": []
@@ -303,16 +303,6 @@
     ],
     "Group B": [
       {
-        "name": "Suiza",
-        "played": 1,
-        "won": 1,
-        "draw": 0,
-        "lost": 0,
-        "gf": 1,
-        "ga": 0,
-        "pts": 3
-      },
-      {
         "name": "Bosnia-H.",
         "played": 1,
         "won": 0,
@@ -336,11 +326,21 @@
         "name": "Qatar",
         "played": 1,
         "won": 0,
-        "draw": 0,
-        "lost": 1,
-        "gf": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 1,
         "ga": 1,
-        "pts": 0
+        "pts": 1
+      },
+      {
+        "name": "Suiza",
+        "played": 1,
+        "won": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 1,
+        "ga": 1,
+        "pts": 1
       }
     ],
     "Group C": [
