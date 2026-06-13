@@ -351,14 +351,24 @@
     ],
     "Group C": [
       {
-        "name": "Marruecos",
+        "name": "Brasil",
         "played": 1,
-        "won": 1,
-        "draw": 0,
+        "won": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 1,
-        "ga": 0,
-        "pts": 3
+        "ga": 1,
+        "pts": 1
+      },
+      {
+        "name": "Marruecos",
+        "played": 1,
+        "won": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 1,
+        "ga": 1,
+        "pts": 1
       },
       {
         "name": "Haiti",
@@ -378,16 +388,6 @@
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Brasil",
-        "played": 1,
-        "won": 0,
-        "draw": 0,
-        "lost": 1,
-        "gf": 0,
-        "ga": 1,
         "pts": 0
       }
     ],
