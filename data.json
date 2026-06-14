@@ -268,6 +268,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-14_Australia_Turquia": {
+      "hg": 2,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -410,22 +416,22 @@
       },
       {
         "name": "Australia",
-        "played": 0,
-        "won": 0,
+        "played": 1,
+        "won": 1,
         "draw": 0,
         "lost": 0,
-        "gf": 0,
+        "gf": 2,
         "ga": 0,
-        "pts": 0
+        "pts": 3
       },
       {
         "name": "Turquia",
-        "played": 0,
+        "played": 1,
         "won": 0,
         "draw": 0,
-        "lost": 0,
+        "lost": 1,
         "gf": 0,
-        "ga": 0,
+        "ga": 2,
         "pts": 0
       },
       {
