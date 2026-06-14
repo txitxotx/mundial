@@ -274,6 +274,12 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-14_Alemania_Curaçao": {
+      "hg": 1,
+      "ag": 1,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -448,23 +454,23 @@
     "Group E": [
       {
         "name": "Curaçao",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "gf": 1,
+        "ga": 1,
+        "pts": 1
       },
       {
         "name": "Alemania",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "gf": 1,
+        "ga": 1,
+        "pts": 1
       },
       {
         "name": "Ecuador",
