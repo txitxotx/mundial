@@ -262,6 +262,12 @@
       "ag": 1,
       "live": true,
       "scorers": []
+    },
+    "2026-06-14_Haiti_Escocia": {
+      "hg": 0,
+      "ag": 1,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -351,6 +357,16 @@
     ],
     "Group C": [
       {
+        "name": "Escocia",
+        "played": 1,
+        "won": 1,
+        "draw": 0,
+        "lost": 0,
+        "gf": 1,
+        "ga": 0,
+        "pts": 3
+      },
+      {
         "name": "Brasil",
         "played": 1,
         "won": 0,
@@ -372,22 +388,12 @@
       },
       {
         "name": "Haiti",
-        "played": 0,
+        "played": 1,
         "won": 0,
         "draw": 0,
-        "lost": 0,
+        "lost": 1,
         "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Escocia",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
+        "ga": 1,
         "pts": 0
       }
     ],
