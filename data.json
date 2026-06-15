@@ -298,6 +298,12 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-15_Belgica_Egypt": {
+      "hg": 1,
+      "ag": 1,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -556,23 +562,23 @@
     "Group G": [
       {
         "name": "Egypt",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "gf": 1,
+        "ga": 1,
+        "pts": 1
       },
       {
         "name": "Belgica",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "gf": 1,
+        "ga": 1,
+        "pts": 1
       },
       {
         "name": "Iran",
@@ -595,7 +601,7 @@
         "pts": 0
       }
     ],
-    "Group H": [
+    "Atlantic Division": [
       {
         "name": "Cabo Verde",
         "played": 1,
@@ -605,7 +611,9 @@
         "gf": 0,
         "ga": 0,
         "pts": 1
-      },
+      }
+    ],
+    "Central Division": [
       {
         "name": "Espana",
         "played": 1,
@@ -615,26 +623,6 @@
         "gf": 0,
         "ga": 0,
         "pts": 1
-      },
-      {
-        "name": "Arabia Saudi",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Uruguay",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
       }
     ],
     "Group I": [
