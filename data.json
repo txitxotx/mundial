@@ -292,6 +292,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-15_Espana_Cabo Verde": {
+      "hg": 0,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -592,26 +598,26 @@
     "Group H": [
       {
         "name": "Cabo Verde",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Arabia Saudi",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Espana",
+        "played": 1,
+        "won": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 1
+      },
+      {
+        "name": "Arabia Saudi",
         "played": 0,
         "won": 0,
         "draw": 0,
