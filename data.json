@@ -286,6 +286,12 @@
       "ag": 2,
       "live": false,
       "scorers": []
+    },
+    "2026-06-15_Sweden_Tunez": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -469,24 +475,24 @@
         "pts": 3
       },
       {
+        "name": "Ivory Coast",
+        "played": 1,
+        "won": 1,
+        "draw": 0,
+        "lost": 0,
+        "gf": 1,
+        "ga": 0,
+        "pts": 3
+      },
+      {
         "name": "Ecuador",
         "played": 1,
         "won": 0,
-        "draw": 1,
-        "lost": 0,
+        "draw": 0,
+        "lost": 1,
         "gf": 0,
-        "ga": 0,
-        "pts": 1
-      },
-      {
-        "name": "Ivory Coast",
-        "played": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 1
+        "ga": 1,
+        "pts": 0
       },
       {
         "name": "Curaçao",
@@ -522,23 +528,23 @@
       },
       {
         "name": "Sweden",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Tunez",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
+        "pts": 1
       }
     ],
     "Group G": [
