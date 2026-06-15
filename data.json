@@ -304,6 +304,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-15_Arabia Saudi_Uruguay": {
+      "hg": 1,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -561,7 +567,7 @@
     ],
     "Group G": [
       {
-        "name": "Egypt",
+        "name": "Belgica",
         "played": 1,
         "won": 0,
         "draw": 1,
@@ -571,7 +577,7 @@
         "pts": 1
       },
       {
-        "name": "Belgica",
+        "name": "Egypt",
         "played": 1,
         "won": 0,
         "draw": 1,
@@ -601,19 +607,17 @@
         "pts": 0
       }
     ],
-    "Atlantic Division": [
+    "Group H": [
       {
-        "name": "Cabo Verde",
+        "name": "Arabia Saudi",
         "played": 1,
-        "won": 0,
-        "draw": 1,
+        "won": 1,
+        "draw": 0,
         "lost": 0,
-        "gf": 0,
+        "gf": 1,
         "ga": 0,
-        "pts": 1
-      }
-    ],
-    "Central Division": [
+        "pts": 3
+      },
       {
         "name": "Espana",
         "played": 1,
@@ -623,6 +627,26 @@
         "gf": 0,
         "ga": 0,
         "pts": 1
+      },
+      {
+        "name": "Cabo Verde",
+        "played": 1,
+        "won": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 1
+      },
+      {
+        "name": "Uruguay",
+        "played": 1,
+        "won": 0,
+        "draw": 0,
+        "lost": 1,
+        "gf": 0,
+        "ga": 1,
+        "pts": 0
       }
     ],
     "Group I": [
