@@ -318,6 +318,12 @@
       "scorers": []
     },
     "2026-06-16_Francia_Senegal": {
+      "hg": 3,
+      "ag": 1,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-16_Irak_Noruega": {
       "hg": 0,
       "ag": 0,
       "live": true,
