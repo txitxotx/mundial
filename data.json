@@ -312,9 +312,9 @@
       "scorers": []
     },
     "2026-06-16_Iran_Nueva Zelanda": {
-      "hg": 1,
-      "ag": 1,
-      "live": true,
+      "hg": 2,
+      "ag": 2,
+      "live": false,
       "scorers": []
     }
   },
@@ -573,14 +573,24 @@
     ],
     "Group G": [
       {
+        "name": "Iran",
+        "played": 1,
+        "won": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 2,
+        "ga": 2,
+        "pts": 1
+      },
+      {
         "name": "Nueva Zelanda",
         "played": 1,
-        "won": 1,
-        "draw": 0,
+        "won": 0,
+        "draw": 1,
         "lost": 0,
-        "gf": 1,
-        "ga": 0,
-        "pts": 3
+        "gf": 2,
+        "ga": 2,
+        "pts": 1
       },
       {
         "name": "Belgica",
@@ -601,16 +611,6 @@
         "gf": 1,
         "ga": 1,
         "pts": 1
-      },
-      {
-        "name": "Iran",
-        "played": 1,
-        "won": 0,
-        "draw": 0,
-        "lost": 1,
-        "gf": 0,
-        "ga": 1,
-        "pts": 0
       }
     ],
     "Group H": [
