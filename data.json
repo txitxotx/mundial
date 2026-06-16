@@ -573,7 +573,7 @@
     ],
     "Group G": [
       {
-        "name": "Iran",
+        "name": "Nueva Zelanda",
         "played": 1,
         "won": 0,
         "draw": 1,
@@ -583,7 +583,7 @@
         "pts": 1
       },
       {
-        "name": "Nueva Zelanda",
+        "name": "Iran",
         "played": 1,
         "won": 0,
         "draw": 1,
@@ -615,7 +615,7 @@
     ],
     "Group H": [
       {
-        "name": "Arabia Saudi",
+        "name": "Uruguay",
         "played": 1,
         "won": 0,
         "draw": 1,
@@ -625,7 +625,7 @@
         "pts": 1
       },
       {
-        "name": "Uruguay",
+        "name": "Arabia Saudi",
         "played": 1,
         "won": 0,
         "draw": 1,
