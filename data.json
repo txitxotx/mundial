@@ -316,6 +316,12 @@
       "ag": 2,
       "live": false,
       "scorers": []
+    },
+    "2026-06-16_Francia_Senegal": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -658,13 +664,23 @@
     "Group I": [
       {
         "name": "Francia",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
+        "pts": 1
+      },
+      {
+        "name": "Senegal",
+        "played": 1,
+        "won": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 1
       },
       {
         "name": "Irak",
@@ -678,16 +694,6 @@
       },
       {
         "name": "Noruega",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Senegal",
         "played": 0,
         "won": 0,
         "draw": 0,
