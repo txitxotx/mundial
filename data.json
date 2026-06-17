@@ -340,6 +340,18 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-17_Portugal_Congo DR": {
+      "hg": 1,
+      "ag": 1,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-17_Inglaterra_Croacia": {
+      "hg": 1,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -766,26 +778,26 @@
     "Group K": [
       {
         "name": "Congo DR",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Colombia",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "gf": 1,
+        "ga": 1,
+        "pts": 1
       },
       {
         "name": "Portugal",
+        "played": 1,
+        "won": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 1,
+        "ga": 1,
+        "pts": 1
+      },
+      {
+        "name": "Colombia",
         "played": 0,
         "won": 0,
         "draw": 0,
@@ -808,26 +820,26 @@
     "Group L": [
       {
         "name": "Inglaterra",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
-      },
-      {
-        "name": "Ghana",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Croacia",
+        "played": 1,
+        "won": 0,
+        "draw": 1,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "pts": 1
+      },
+      {
+        "name": "Ghana",
         "played": 0,
         "won": 0,
         "draw": 0,
