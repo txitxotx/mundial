@@ -330,8 +330,14 @@
       "scorers": []
     },
     "2026-06-17_Argentina_Argelia": {
-      "hg": 1,
+      "hg": 3,
       "ag": 0,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-17_Austria_Jordania": {
+      "hg": 3,
+      "ag": 1,
       "live": false,
       "scorers": []
     }
@@ -722,28 +728,28 @@
         "won": 1,
         "draw": 0,
         "lost": 0,
-        "gf": 1,
+        "gf": 3,
         "ga": 0,
         "pts": 3
       },
       {
-        "name": "Jordania",
-        "played": 0,
-        "won": 0,
+        "name": "Austria",
+        "played": 1,
+        "won": 1,
         "draw": 0,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
+        "gf": 3,
+        "ga": 1,
+        "pts": 3
       },
       {
-        "name": "Austria",
-        "played": 0,
+        "name": "Jordania",
+        "played": 1,
         "won": 0,
         "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
+        "lost": 1,
+        "gf": 1,
+        "ga": 3,
         "pts": 0
       },
       {
@@ -753,7 +759,7 @@
         "draw": 0,
         "lost": 1,
         "gf": 0,
-        "ga": 1,
+        "ga": 3,
         "pts": 0
       }
     ],
