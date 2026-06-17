@@ -328,6 +328,12 @@
       "ag": 3,
       "live": true,
       "scorers": []
+    },
+    "2026-06-17_Argentina_Argelia": {
+      "hg": 1,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -669,6 +675,16 @@
     ],
     "Group I": [
       {
+        "name": "Noruega",
+        "played": 1,
+        "won": 1,
+        "draw": 0,
+        "lost": 0,
+        "gf": 4,
+        "ga": 1,
+        "pts": 3
+      },
+      {
         "name": "Francia",
         "played": 1,
         "won": 1,
@@ -679,26 +695,6 @@
         "pts": 3
       },
       {
-        "name": "Noruega",
-        "played": 1,
-        "won": 1,
-        "draw": 0,
-        "lost": 0,
-        "gf": 2,
-        "ga": 1,
-        "pts": 3
-      },
-      {
-        "name": "Irak",
-        "played": 1,
-        "won": 0,
-        "draw": 0,
-        "lost": 1,
-        "gf": 1,
-        "ga": 2,
-        "pts": 0
-      },
-      {
         "name": "Senegal",
         "played": 1,
         "won": 0,
@@ -707,28 +703,28 @@
         "gf": 1,
         "ga": 3,
         "pts": 0
+      },
+      {
+        "name": "Irak",
+        "played": 1,
+        "won": 0,
+        "draw": 0,
+        "lost": 1,
+        "gf": 1,
+        "ga": 4,
+        "pts": 0
       }
     ],
     "Group J": [
       {
-        "name": "Argelia",
-        "played": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 0
-      },
-      {
         "name": "Argentina",
-        "played": 0,
-        "won": 0,
+        "played": 1,
+        "won": 1,
         "draw": 0,
         "lost": 0,
-        "gf": 0,
+        "gf": 1,
         "ga": 0,
-        "pts": 0
+        "pts": 3
       },
       {
         "name": "Jordania",
@@ -748,6 +744,16 @@
         "lost": 0,
         "gf": 0,
         "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Argelia",
+        "played": 1,
+        "won": 0,
+        "draw": 0,
+        "lost": 1,
+        "gf": 0,
+        "ga": 1,
         "pts": 0
       }
     ],
