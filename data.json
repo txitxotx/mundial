@@ -348,9 +348,9 @@
       "scorers": []
     },
     "2026-06-17_Inglaterra_Croacia": {
-      "hg": 1,
-      "ag": 0,
-      "live": true,
+      "hg": 4,
+      "ag": 2,
+      "live": false,
       "scorers": []
     }
   },
@@ -821,22 +821,12 @@
       {
         "name": "Inglaterra",
         "played": 1,
-        "won": 0,
-        "draw": 1,
+        "won": 1,
+        "draw": 0,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 1
-      },
-      {
-        "name": "Croacia",
-        "played": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "pts": 1
+        "gf": 4,
+        "ga": 2,
+        "pts": 3
       },
       {
         "name": "Ghana",
@@ -856,6 +846,16 @@
         "lost": 0,
         "gf": 0,
         "ga": 0,
+        "pts": 0
+      },
+      {
+        "name": "Croacia",
+        "played": 1,
+        "won": 0,
+        "draw": 0,
+        "lost": 1,
+        "gf": 2,
+        "ga": 4,
         "pts": 0
       }
     ]
