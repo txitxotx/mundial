@@ -352,6 +352,12 @@
       "ag": 2,
       "live": false,
       "scorers": []
+    },
+    "2026-06-17_Ghana_Panama": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -830,23 +836,23 @@
       },
       {
         "name": "Ghana",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Panama",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 0,
         "ga": 0,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Croacia",
