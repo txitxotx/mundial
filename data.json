@@ -370,6 +370,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-18_Suiza_Bosnia-H.": {
+      "hg": 4,
+      "ag": 1,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -419,22 +425,12 @@
       {
         "name": "Suiza",
         "played": 2,
-        "won": 0,
-        "draw": 2,
+        "won": 1,
+        "draw": 1,
         "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "pts": 2
-      },
-      {
-        "name": "Bosnia-H.",
-        "played": 2,
-        "won": 0,
-        "draw": 2,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "pts": 2
+        "gf": 5,
+        "ga": 2,
+        "pts": 4
       },
       {
         "name": "Canada",
@@ -444,6 +440,16 @@
         "lost": 0,
         "gf": 1,
         "ga": 1,
+        "pts": 1
+      },
+      {
+        "name": "Bosnia-H.",
+        "played": 2,
+        "won": 0,
+        "draw": 1,
+        "lost": 1,
+        "gf": 2,
+        "ga": 5,
         "pts": 1
       },
       {
