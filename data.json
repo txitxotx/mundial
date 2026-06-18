@@ -364,6 +364,12 @@
       "ag": 3,
       "live": false,
       "scorers": []
+    },
+    "2026-06-18_Czechia_Sudafrica": {
+      "hg": 1,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -390,22 +396,22 @@
       },
       {
         "name": "Czechia",
-        "played": 1,
-        "won": 0,
+        "played": 2,
+        "won": 1,
         "draw": 0,
         "lost": 1,
-        "gf": 1,
+        "gf": 2,
         "ga": 2,
-        "pts": 0
+        "pts": 3
       },
       {
         "name": "Sudafrica",
-        "played": 1,
+        "played": 2,
         "won": 0,
         "draw": 0,
-        "lost": 1,
+        "lost": 2,
         "gf": 0,
-        "ga": 2,
+        "ga": 3,
         "pts": 0
       }
     ],
