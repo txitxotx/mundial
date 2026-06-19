@@ -388,6 +388,12 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-19_Estados Unidos_Australia": {
+      "hg": 2,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -520,22 +526,22 @@
     "Group D": [
       {
         "name": "Estados Unidos",
-        "played": 1,
-        "won": 1,
+        "played": 2,
+        "won": 2,
         "draw": 0,
         "lost": 0,
-        "gf": 4,
+        "gf": 6,
         "ga": 1,
-        "pts": 3
+        "pts": 6
       },
       {
         "name": "Australia",
-        "played": 1,
+        "played": 2,
         "won": 1,
         "draw": 0,
-        "lost": 0,
+        "lost": 1,
         "gf": 2,
-        "ga": 0,
+        "ga": 2,
         "pts": 3
       },
       {
