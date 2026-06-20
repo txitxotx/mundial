@@ -414,8 +414,8 @@
       "scorers": []
     },
     "2026-06-20_Paises Bajos_Sweden": {
-      "hg": 2,
-      "ag": 0,
+      "hg": 5,
+      "ag": 1,
       "live": false,
       "scorers": []
     }
@@ -638,8 +638,8 @@
         "won": 1,
         "draw": 1,
         "lost": 0,
-        "gf": 4,
-        "ga": 2,
+        "gf": 7,
+        "ga": 3,
         "pts": 4
       },
       {
@@ -648,8 +648,8 @@
         "won": 1,
         "draw": 0,
         "lost": 1,
-        "gf": 5,
-        "ga": 3,
+        "gf": 6,
+        "ga": 6,
         "pts": 3
       },
       {
