@@ -400,6 +400,12 @@
       "ag": 1,
       "live": true,
       "scorers": []
+    },
+    "2026-06-20_Brasil_Haiti": {
+      "hg": 3,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -499,6 +505,16 @@
         "pts": 4
       },
       {
+        "name": "Brasil",
+        "played": 2,
+        "won": 1,
+        "draw": 1,
+        "lost": 0,
+        "gf": 4,
+        "ga": 1,
+        "pts": 4
+      },
+      {
         "name": "Escocia",
         "played": 2,
         "won": 1,
@@ -509,23 +525,13 @@
         "pts": 3
       },
       {
-        "name": "Brasil",
-        "played": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "pts": 1
-      },
-      {
         "name": "Haiti",
-        "played": 1,
+        "played": 2,
         "won": 0,
         "draw": 0,
-        "lost": 1,
+        "lost": 2,
         "gf": 0,
-        "ga": 1,
+        "ga": 4,
         "pts": 0
       }
     ],
