@@ -420,7 +420,7 @@
       "scorers": []
     },
     "2026-06-20_Alemania_Ivory Coast": {
-      "hg": 0,
+      "hg": 1,
       "ag": 1,
       "live": true,
       "scorers": []
@@ -597,24 +597,24 @@
     ],
     "Group E": [
       {
+        "name": "Ivory Coast",
+        "played": 2,
+        "won": 2,
+        "draw": 0,
+        "lost": 0,
+        "gf": 2,
+        "ga": 0,
+        "pts": 6
+      },
+      {
         "name": "Alemania",
         "played": 2,
         "won": 1,
-        "draw": 1,
-        "lost": 0,
+        "draw": 0,
+        "lost": 1,
         "gf": 7,
-        "ga": 1,
-        "pts": 4
-      },
-      {
-        "name": "Ivory Coast",
-        "played": 2,
-        "won": 1,
-        "draw": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 0,
-        "pts": 4
+        "ga": 2,
+        "pts": 3
       },
       {
         "name": "Ecuador",
