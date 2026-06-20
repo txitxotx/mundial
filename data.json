@@ -412,6 +412,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-20_Paises Bajos_Sweden": {
+      "hg": 2,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -627,27 +633,27 @@
     ],
     "Group F": [
       {
+        "name": "Paises Bajos",
+        "played": 2,
+        "won": 1,
+        "draw": 1,
+        "lost": 0,
+        "gf": 4,
+        "ga": 2,
+        "pts": 4
+      },
+      {
         "name": "Sweden",
-        "played": 1,
+        "played": 2,
         "won": 1,
         "draw": 0,
-        "lost": 0,
+        "lost": 1,
         "gf": 5,
-        "ga": 1,
+        "ga": 3,
         "pts": 3
       },
       {
         "name": "Japon",
-        "played": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "gf": 2,
-        "ga": 2,
-        "pts": 1
-      },
-      {
-        "name": "Paises Bajos",
         "played": 1,
         "won": 0,
         "draw": 1,
