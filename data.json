@@ -424,6 +424,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-21_Ecuador_Curaçao": {
+      "hg": 0,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -618,23 +624,23 @@
       },
       {
         "name": "Ecuador",
-        "played": 1,
+        "played": 2,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
         "gf": 0,
         "ga": 1,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Curaçao",
-        "played": 1,
+        "played": 2,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
         "gf": 1,
         "ga": 7,
-        "pts": 0
+        "pts": 1
       }
     ],
     "Group F": [
