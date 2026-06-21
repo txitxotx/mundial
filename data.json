@@ -438,7 +438,7 @@
       "scorers": []
     },
     "2026-06-21_Espana_Arabia Saudi": {
-      "hg": 1,
+      "hg": 4,
       "ag": 0,
       "live": true,
       "scorers": []
@@ -741,24 +741,14 @@
     ],
     "Group H": [
       {
-        "name": "Arabia Saudi",
-        "played": 2,
-        "won": 0,
-        "draw": 2,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "pts": 2
-      },
-      {
         "name": "Espana",
         "played": 2,
-        "won": 0,
-        "draw": 2,
+        "won": 1,
+        "draw": 1,
         "lost": 0,
-        "gf": 0,
+        "gf": 4,
         "ga": 0,
-        "pts": 2
+        "pts": 4
       },
       {
         "name": "Uruguay",
@@ -768,6 +758,16 @@
         "lost": 0,
         "gf": 1,
         "ga": 1,
+        "pts": 1
+      },
+      {
+        "name": "Arabia Saudi",
+        "played": 2,
+        "won": 0,
+        "draw": 1,
+        "lost": 1,
+        "gf": 1,
+        "ga": 5,
         "pts": 1
       },
       {
