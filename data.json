@@ -438,7 +438,13 @@
       "scorers": []
     },
     "2026-06-21_Espana_Arabia Saudi": {
-      "hg": 4,
+      "hg": 5,
+      "ag": 0,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-21_Belgica_Iran": {
+      "hg": 0,
       "ag": 0,
       "live": true,
       "scorers": []
@@ -699,6 +705,26 @@
     ],
     "Group G": [
       {
+        "name": "Iran",
+        "played": 2,
+        "won": 0,
+        "draw": 2,
+        "lost": 0,
+        "gf": 2,
+        "ga": 2,
+        "pts": 2
+      },
+      {
+        "name": "Belgica",
+        "played": 2,
+        "won": 0,
+        "draw": 2,
+        "lost": 0,
+        "gf": 1,
+        "ga": 1,
+        "pts": 2
+      },
+      {
         "name": "Nueva Zelanda",
         "played": 1,
         "won": 0,
@@ -706,26 +732,6 @@
         "lost": 0,
         "gf": 2,
         "ga": 2,
-        "pts": 1
-      },
-      {
-        "name": "Iran",
-        "played": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "gf": 2,
-        "ga": 2,
-        "pts": 1
-      },
-      {
-        "name": "Belgica",
-        "played": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
         "pts": 1
       },
       {
