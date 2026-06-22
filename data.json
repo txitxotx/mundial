@@ -466,6 +466,12 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-22_Francia_Irak": {
+      "hg": 1,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -807,22 +813,22 @@
     ],
     "Group I": [
       {
+        "name": "Francia",
+        "played": 2,
+        "won": 2,
+        "draw": 0,
+        "lost": 0,
+        "gf": 4,
+        "ga": 1,
+        "pts": 6
+      },
+      {
         "name": "Noruega",
         "played": 1,
         "won": 1,
         "draw": 0,
         "lost": 0,
         "gf": 4,
-        "ga": 1,
-        "pts": 3
-      },
-      {
-        "name": "Francia",
-        "played": 1,
-        "won": 1,
-        "draw": 0,
-        "lost": 0,
-        "gf": 3,
         "ga": 1,
         "pts": 3
       },
@@ -838,12 +844,12 @@
       },
       {
         "name": "Irak",
-        "played": 1,
+        "played": 2,
         "won": 0,
         "draw": 0,
-        "lost": 1,
+        "lost": 2,
         "gf": 1,
-        "ga": 4,
+        "ga": 5,
         "pts": 0
       }
     ],
