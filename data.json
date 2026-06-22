@@ -454,6 +454,12 @@
       "ag": 1,
       "live": true,
       "scorers": []
+    },
+    "2026-06-22_Nueva Zelanda_Egypt": {
+      "hg": 1,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -711,6 +717,16 @@
     ],
     "Group G": [
       {
+        "name": "Nueva Zelanda",
+        "played": 2,
+        "won": 1,
+        "draw": 1,
+        "lost": 0,
+        "gf": 3,
+        "ga": 2,
+        "pts": 4
+      },
+      {
         "name": "Iran",
         "played": 2,
         "won": 0,
@@ -731,37 +747,17 @@
         "pts": 2
       },
       {
-        "name": "Nueva Zelanda",
-        "played": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "gf": 2,
-        "ga": 2,
-        "pts": 1
-      },
-      {
         "name": "Egypt",
-        "played": 1,
+        "played": 2,
         "won": 0,
         "draw": 1,
-        "lost": 0,
+        "lost": 1,
         "gf": 1,
-        "ga": 1,
+        "ga": 2,
         "pts": 1
       }
     ],
     "Group H": [
-      {
-        "name": "Uruguay",
-        "played": 2,
-        "won": 1,
-        "draw": 1,
-        "lost": 0,
-        "gf": 3,
-        "ga": 2,
-        "pts": 4
-      },
       {
         "name": "Espana",
         "played": 2,
@@ -773,6 +769,26 @@
         "pts": 4
       },
       {
+        "name": "Uruguay",
+        "played": 2,
+        "won": 0,
+        "draw": 2,
+        "lost": 0,
+        "gf": 3,
+        "ga": 3,
+        "pts": 2
+      },
+      {
+        "name": "Cabo Verde",
+        "played": 2,
+        "won": 0,
+        "draw": 2,
+        "lost": 0,
+        "gf": 2,
+        "ga": 2,
+        "pts": 2
+      },
+      {
         "name": "Arabia Saudi",
         "played": 2,
         "won": 0,
@@ -780,16 +796,6 @@
         "lost": 1,
         "gf": 1,
         "ga": 5,
-        "pts": 1
-      },
-      {
-        "name": "Cabo Verde",
-        "played": 2,
-        "won": 0,
-        "draw": 1,
-        "lost": 1,
-        "gf": 1,
-        "ga": 2,
         "pts": 1
       }
     ],
