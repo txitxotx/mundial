@@ -460,6 +460,12 @@
       "ag": 3,
       "live": false,
       "scorers": []
+    },
+    "2026-06-22_Argentina_Austria": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -844,23 +850,23 @@
     "Group J": [
       {
         "name": "Argentina",
-        "played": 1,
+        "played": 2,
         "won": 1,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 3,
         "ga": 0,
-        "pts": 3
+        "pts": 4
       },
       {
         "name": "Austria",
-        "played": 1,
+        "played": 2,
         "won": 1,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 3,
         "ga": 1,
-        "pts": 3
+        "pts": 4
       },
       {
         "name": "Jordania",
