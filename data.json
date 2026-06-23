@@ -475,8 +475,14 @@
     },
     "2026-06-23_Noruega_Senegal": {
       "hg": 3,
-      "ag": 1,
-      "live": true,
+      "ag": 2,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-23_Jordania_Argelia": {
+      "hg": 1,
+      "ag": 2,
+      "live": false,
       "scorers": []
     }
   },
@@ -819,16 +825,6 @@
     ],
     "Group I": [
       {
-        "name": "Noruega",
-        "played": 2,
-        "won": 2,
-        "draw": 0,
-        "lost": 0,
-        "gf": 7,
-        "ga": 2,
-        "pts": 6
-      },
-      {
         "name": "Francia",
         "played": 2,
         "won": 2,
@@ -839,12 +835,22 @@
         "pts": 6
       },
       {
+        "name": "Noruega",
+        "played": 2,
+        "won": 2,
+        "draw": 0,
+        "lost": 0,
+        "gf": 7,
+        "ga": 3,
+        "pts": 6
+      },
+      {
         "name": "Senegal",
         "played": 2,
         "won": 0,
         "draw": 0,
         "lost": 2,
-        "gf": 2,
+        "gf": 3,
         "ga": 6,
         "pts": 0
       },
@@ -881,23 +887,23 @@
         "pts": 3
       },
       {
-        "name": "Jordania",
-        "played": 1,
-        "won": 0,
+        "name": "Argelia",
+        "played": 2,
+        "won": 1,
         "draw": 0,
         "lost": 1,
-        "gf": 1,
-        "ga": 3,
-        "pts": 0
+        "gf": 2,
+        "ga": 4,
+        "pts": 3
       },
       {
-        "name": "Argelia",
-        "played": 1,
+        "name": "Jordania",
+        "played": 2,
         "won": 0,
         "draw": 0,
-        "lost": 1,
-        "gf": 0,
-        "ga": 3,
+        "lost": 2,
+        "gf": 2,
+        "ga": 5,
         "pts": 0
       }
     ],
