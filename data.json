@@ -496,6 +496,12 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-23_Panama_Croacia": {
+      "hg": 0,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -984,23 +990,23 @@
       },
       {
         "name": "Panama",
-        "played": 1,
+        "played": 2,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
         "gf": 0,
         "ga": 1,
-        "pts": 0
+        "pts": 1
       },
       {
         "name": "Croacia",
-        "played": 1,
+        "played": 2,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
         "gf": 2,
         "ga": 4,
-        "pts": 0
+        "pts": 1
       }
     ]
   }
