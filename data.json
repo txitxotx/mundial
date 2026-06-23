@@ -472,6 +472,12 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-23_Noruega_Senegal": {
+      "hg": 3,
+      "ag": 1,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -813,33 +819,33 @@
     ],
     "Group I": [
       {
+        "name": "Noruega",
+        "played": 2,
+        "won": 2,
+        "draw": 0,
+        "lost": 0,
+        "gf": 7,
+        "ga": 2,
+        "pts": 6
+      },
+      {
         "name": "Francia",
         "played": 2,
         "won": 2,
         "draw": 0,
         "lost": 0,
-        "gf": 4,
+        "gf": 6,
         "ga": 1,
         "pts": 6
       },
       {
-        "name": "Noruega",
-        "played": 1,
-        "won": 1,
-        "draw": 0,
-        "lost": 0,
-        "gf": 4,
-        "ga": 1,
-        "pts": 3
-      },
-      {
         "name": "Senegal",
-        "played": 1,
+        "played": 2,
         "won": 0,
         "draw": 0,
-        "lost": 1,
-        "gf": 1,
-        "ga": 3,
+        "lost": 2,
+        "gf": 2,
+        "ga": 6,
         "pts": 0
       },
       {
@@ -849,7 +855,7 @@
         "draw": 0,
         "lost": 2,
         "gf": 1,
-        "ga": 5,
+        "ga": 7,
         "pts": 0
       }
     ],
