@@ -484,6 +484,12 @@
       "ag": 2,
       "live": false,
       "scorers": []
+    },
+    "2026-06-23_Portugal_Uzbekistan": {
+      "hg": 3,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -909,6 +915,16 @@
     ],
     "Group K": [
       {
+        "name": "Portugal",
+        "played": 2,
+        "won": 1,
+        "draw": 1,
+        "lost": 0,
+        "gf": 4,
+        "ga": 1,
+        "pts": 4
+      },
+      {
         "name": "Colombia",
         "played": 1,
         "won": 1,
@@ -929,23 +945,13 @@
         "pts": 1
       },
       {
-        "name": "Portugal",
-        "played": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "pts": 1
-      },
-      {
         "name": "Uzbekistan",
-        "played": 1,
+        "played": 2,
         "won": 0,
         "draw": 0,
-        "lost": 1,
+        "lost": 2,
         "gf": 1,
-        "ga": 3,
+        "ga": 6,
         "pts": 0
       }
     ],
