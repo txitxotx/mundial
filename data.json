@@ -508,6 +508,18 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-24_Suiza_Canada": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
+    },
+    "2026-06-24_Bosnia-H._Qatar": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -556,43 +568,43 @@
     "Group B": [
       {
         "name": "Canada",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 1,
+        "draw": 2,
         "lost": 0,
         "gf": 7,
         "ga": 1,
-        "pts": 4
+        "pts": 5
       },
       {
         "name": "Suiza",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 1,
+        "draw": 2,
         "lost": 0,
         "gf": 5,
         "ga": 2,
-        "pts": 4
+        "pts": 5
       },
       {
         "name": "Bosnia-H.",
-        "played": 2,
+        "played": 3,
         "won": 0,
-        "draw": 1,
+        "draw": 2,
         "lost": 1,
         "gf": 2,
         "ga": 5,
-        "pts": 1
+        "pts": 2
       },
       {
         "name": "Qatar",
-        "played": 2,
+        "played": 3,
         "won": 0,
-        "draw": 1,
+        "draw": 2,
         "lost": 1,
         "gf": 1,
         "ga": 7,
-        "pts": 1
+        "pts": 2
       }
     ],
     "Group C": [
