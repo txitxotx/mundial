@@ -512,13 +512,25 @@
     "2026-06-24_Suiza_Canada": {
       "hg": 2,
       "ag": 1,
-      "live": true,
+      "live": false,
       "scorers": []
     },
     "2026-06-24_Bosnia-H._Qatar": {
       "hg": 3,
       "ag": 1,
-      "live": true,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-24_Marruecos_Haiti": {
+      "hg": 0,
+      "ag": 1,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-24_Escocia_Brasil": {
+      "hg": 0,
+      "ag": 1,
+      "live": false,
       "scorers": []
     }
   },
@@ -573,7 +585,7 @@
         "draw": 1,
         "lost": 0,
         "gf": 7,
-        "ga": 2,
+        "ga": 3,
         "pts": 7
       },
       {
@@ -582,7 +594,7 @@
         "won": 1,
         "draw": 1,
         "lost": 1,
-        "gf": 7,
+        "gf": 8,
         "ga": 3,
         "pts": 4
       },
@@ -592,7 +604,7 @@
         "won": 1,
         "draw": 1,
         "lost": 1,
-        "gf": 4,
+        "gf": 5,
         "ga": 6,
         "pts": 4
       },
@@ -603,50 +615,50 @@
         "draw": 1,
         "lost": 2,
         "gf": 2,
-        "ga": 9,
+        "ga": 10,
         "pts": 1
       }
     ],
     "Group C": [
       {
         "name": "Brasil",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 1,
+        "draw": 2,
         "lost": 0,
         "gf": 4,
         "ga": 1,
-        "pts": 4
+        "pts": 5
       },
       {
         "name": "Marruecos",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 1,
+        "draw": 2,
         "lost": 0,
         "gf": 2,
+        "ga": 1,
+        "pts": 5
+      },
+      {
+        "name": "Escocia",
+        "played": 3,
+        "won": 1,
+        "draw": 1,
+        "lost": 1,
+        "gf": 1,
         "ga": 1,
         "pts": 4
       },
       {
-        "name": "Escocia",
-        "played": 2,
-        "won": 1,
-        "draw": 0,
-        "lost": 1,
-        "gf": 1,
-        "ga": 1,
-        "pts": 3
-      },
-      {
         "name": "Haiti",
-        "played": 2,
+        "played": 3,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 2,
         "gf": 0,
         "ga": 4,
-        "pts": 0
+        "pts": 1
       }
     ],
     "Group D": [
