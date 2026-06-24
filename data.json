@@ -522,15 +522,15 @@
       "scorers": []
     },
     "2026-06-24_Marruecos_Haiti": {
-      "hg": 0,
-      "ag": 1,
-      "live": false,
+      "hg": 2,
+      "ag": 2,
+      "live": true,
       "scorers": []
     },
     "2026-06-24_Escocia_Brasil": {
       "hg": 0,
-      "ag": 1,
-      "live": false,
+      "ag": 3,
+      "live": true,
       "scorers": []
     }
   },
@@ -623,12 +623,12 @@
       {
         "name": "Brasil",
         "played": 3,
-        "won": 1,
-        "draw": 2,
+        "won": 2,
+        "draw": 1,
         "lost": 0,
-        "gf": 4,
+        "gf": 7,
         "ga": 1,
-        "pts": 5
+        "pts": 7
       },
       {
         "name": "Marruecos",
@@ -636,19 +636,19 @@
         "won": 1,
         "draw": 2,
         "lost": 0,
-        "gf": 2,
-        "ga": 1,
+        "gf": 4,
+        "ga": 3,
         "pts": 5
       },
       {
         "name": "Escocia",
         "played": 3,
         "won": 1,
-        "draw": 1,
-        "lost": 1,
+        "draw": 0,
+        "lost": 2,
         "gf": 1,
-        "ga": 1,
-        "pts": 4
+        "ga": 4,
+        "pts": 3
       },
       {
         "name": "Haiti",
@@ -656,8 +656,8 @@
         "won": 0,
         "draw": 1,
         "lost": 2,
-        "gf": 0,
-        "ga": 4,
+        "gf": 2,
+        "ga": 6,
         "pts": 1
       }
     ],
