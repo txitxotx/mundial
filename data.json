@@ -546,15 +546,15 @@
       "scorers": []
     },
     "2026-06-25_Ecuador_Alemania": {
-      "hg": 1,
+      "hg": 2,
       "ag": 1,
-      "live": false,
+      "live": true,
       "scorers": []
     },
     "2026-06-25_Curaçao_Ivory Coast": {
       "hg": 0,
-      "ag": 1,
-      "live": false,
+      "ag": 2,
+      "live": true,
       "scorers": []
     }
   },
@@ -734,19 +734,19 @@
         "won": 2,
         "draw": 1,
         "lost": 0,
-        "gf": 9,
-        "ga": 2,
+        "gf": 10,
+        "ga": 3,
         "pts": 7
       },
       {
         "name": "Ivory Coast",
         "played": 3,
-        "won": 1,
-        "draw": 1,
+        "won": 2,
+        "draw": 0,
         "lost": 1,
-        "gf": 2,
+        "gf": 4,
         "ga": 2,
-        "pts": 4
+        "pts": 6
       },
       {
         "name": "Ecuador",
@@ -754,19 +754,19 @@
         "won": 0,
         "draw": 2,
         "lost": 1,
-        "gf": 0,
-        "ga": 1,
+        "gf": 1,
+        "ga": 2,
         "pts": 2
       },
       {
         "name": "Curaçao",
         "played": 3,
         "won": 0,
-        "draw": 2,
-        "lost": 1,
+        "draw": 1,
+        "lost": 2,
         "gf": 1,
-        "ga": 7,
-        "pts": 2
+        "ga": 9,
+        "pts": 1
       }
     ],
     "Group F": [
