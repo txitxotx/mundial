@@ -535,14 +535,14 @@
     },
     "2026-06-25_Czechia_Mexico": {
       "hg": 0,
-      "ag": 0,
-      "live": true,
+      "ag": 3,
+      "live": false,
       "scorers": []
     },
     "2026-06-25_Sudafrica_Korea Republic": {
-      "hg": 0,
+      "hg": 1,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
@@ -551,42 +551,42 @@
       {
         "name": "Mexico",
         "played": 3,
-        "won": 2,
-        "draw": 1,
+        "won": 3,
+        "draw": 0,
         "lost": 0,
-        "gf": 3,
+        "gf": 6,
         "ga": 0,
-        "pts": 7
+        "pts": 9
       },
       {
-        "name": "Korea Republic",
+        "name": "Sudafrica",
         "played": 3,
         "won": 1,
         "draw": 1,
         "lost": 1,
         "gf": 2,
-        "ga": 2,
+        "ga": 3,
         "pts": 4
+      },
+      {
+        "name": "Korea Republic",
+        "played": 3,
+        "won": 1,
+        "draw": 0,
+        "lost": 2,
+        "gf": 2,
+        "ga": 3,
+        "pts": 3
       },
       {
         "name": "Czechia",
         "played": 3,
         "won": 0,
-        "draw": 2,
-        "lost": 1,
+        "draw": 1,
+        "lost": 2,
         "gf": 2,
-        "ga": 3,
-        "pts": 2
-      },
-      {
-        "name": "Sudafrica",
-        "played": 3,
-        "won": 0,
-        "draw": 2,
-        "lost": 1,
-        "gf": 1,
-        "ga": 3,
-        "pts": 2
+        "ga": 6,
+        "pts": 1
       }
     ],
     "Group B": [
