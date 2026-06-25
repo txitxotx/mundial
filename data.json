@@ -532,49 +532,61 @@
       "ag": 3,
       "live": true,
       "scorers": []
+    },
+    "2026-06-25_Czechia_Mexico": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
+    },
+    "2026-06-25_Sudafrica_Korea Republic": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
     "Group A": [
       {
         "name": "Mexico",
-        "played": 2,
+        "played": 3,
         "won": 2,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 3,
         "ga": 0,
-        "pts": 6
+        "pts": 7
       },
       {
         "name": "Korea Republic",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
         "gf": 2,
         "ga": 2,
-        "pts": 3
+        "pts": 4
       },
       {
         "name": "Czechia",
-        "played": 2,
+        "played": 3,
         "won": 0,
-        "draw": 1,
+        "draw": 2,
         "lost": 1,
         "gf": 2,
         "ga": 3,
-        "pts": 1
+        "pts": 2
       },
       {
         "name": "Sudafrica",
-        "played": 2,
+        "played": 3,
         "won": 0,
-        "draw": 1,
+        "draw": 2,
         "lost": 1,
         "gf": 1,
         "ga": 3,
-        "pts": 1
+        "pts": 2
       }
     ],
     "Group B": [
@@ -633,12 +645,12 @@
       {
         "name": "Marruecos",
         "played": 3,
-        "won": 1,
-        "draw": 2,
+        "won": 2,
+        "draw": 1,
         "lost": 0,
-        "gf": 4,
+        "gf": 6,
         "ga": 3,
-        "pts": 5
+        "pts": 7
       },
       {
         "name": "Escocia",
@@ -654,11 +666,11 @@
         "name": "Haiti",
         "played": 3,
         "won": 0,
-        "draw": 1,
-        "lost": 2,
+        "draw": 0,
+        "lost": 3,
         "gf": 2,
-        "ga": 6,
-        "pts": 1
+        "ga": 8,
+        "pts": 0
       }
     ],
     "Group D": [
