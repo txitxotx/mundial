@@ -548,13 +548,13 @@
     "2026-06-25_Ecuador_Alemania": {
       "hg": 2,
       "ag": 1,
-      "live": true,
+      "live": false,
       "scorers": []
     },
     "2026-06-25_Curaçao_Ivory Coast": {
       "hg": 0,
       "ag": 2,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
@@ -732,11 +732,11 @@
         "name": "Alemania",
         "played": 3,
         "won": 2,
-        "draw": 1,
-        "lost": 0,
+        "draw": 0,
+        "lost": 1,
         "gf": 10,
-        "ga": 3,
-        "pts": 7
+        "ga": 4,
+        "pts": 6
       },
       {
         "name": "Ivory Coast",
@@ -751,12 +751,12 @@
       {
         "name": "Ecuador",
         "played": 3,
-        "won": 0,
-        "draw": 2,
+        "won": 1,
+        "draw": 1,
         "lost": 1,
-        "gf": 1,
+        "gf": 2,
         "ga": 2,
-        "pts": 2
+        "pts": 4
       },
       {
         "name": "Curaçao",
@@ -772,43 +772,43 @@
     "Group F": [
       {
         "name": "Paises Bajos",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 1,
+        "draw": 2,
         "lost": 0,
         "gf": 7,
         "ga": 3,
-        "pts": 4
+        "pts": 5
       },
       {
         "name": "Japon",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 1,
+        "draw": 2,
         "lost": 0,
         "gf": 6,
         "ga": 2,
-        "pts": 4
+        "pts": 5
       },
       {
         "name": "Sweden",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
         "gf": 6,
         "ga": 6,
-        "pts": 3
+        "pts": 4
       },
       {
         "name": "Tunez",
-        "played": 2,
+        "played": 3,
         "won": 0,
-        "draw": 0,
+        "draw": 1,
         "lost": 2,
         "gf": 1,
         "ga": 9,
-        "pts": 0
+        "pts": 1
       }
     ],
     "Group G": [
