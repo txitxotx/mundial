@@ -568,6 +568,18 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-26_Noruega_Francia": {
+      "hg": 1,
+      "ag": 3,
+      "live": true,
+      "scorers": []
+    },
+    "2026-06-26_Senegal_Irak": {
+      "hg": 4,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -911,42 +923,42 @@
       {
         "name": "Francia",
         "played": 3,
-        "won": 2,
-        "draw": 1,
+        "won": 3,
+        "draw": 0,
         "lost": 0,
-        "gf": 6,
-        "ga": 1,
-        "pts": 7
+        "gf": 9,
+        "ga": 2,
+        "pts": 9
       },
       {
         "name": "Noruega",
         "played": 3,
         "won": 2,
-        "draw": 1,
-        "lost": 0,
-        "gf": 7,
-        "ga": 3,
-        "pts": 7
+        "draw": 0,
+        "lost": 1,
+        "gf": 8,
+        "ga": 6,
+        "pts": 6
       },
       {
         "name": "Senegal",
         "played": 3,
-        "won": 0,
-        "draw": 1,
+        "won": 1,
+        "draw": 0,
         "lost": 2,
-        "gf": 3,
+        "gf": 6,
         "ga": 6,
-        "pts": 1
+        "pts": 3
       },
       {
         "name": "Irak",
         "played": 3,
         "won": 0,
-        "draw": 1,
-        "lost": 2,
+        "draw": 0,
+        "lost": 3,
         "gf": 1,
-        "ga": 7,
-        "pts": 1
+        "ga": 10,
+        "pts": 0
       }
     ],
     "Group J": [
