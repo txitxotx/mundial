@@ -773,12 +773,12 @@
       {
         "name": "Paises Bajos",
         "played": 3,
-        "won": 1,
-        "draw": 2,
+        "won": 2,
+        "draw": 1,
         "lost": 0,
-        "gf": 7,
+        "gf": 9,
         "ga": 3,
-        "pts": 5
+        "pts": 7
       },
       {
         "name": "Japon",
@@ -804,11 +804,11 @@
         "name": "Tunez",
         "played": 3,
         "won": 0,
-        "draw": 1,
-        "lost": 2,
+        "draw": 0,
+        "lost": 3,
         "gf": 1,
-        "ga": 9,
-        "pts": 1
+        "ga": 11,
+        "pts": 0
       }
     ],
     "Group G": [
