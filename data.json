@@ -571,14 +571,14 @@
     },
     "2026-06-26_Noruega_Francia": {
       "hg": 1,
-      "ag": 3,
-      "live": true,
+      "ag": 4,
+      "live": false,
       "scorers": []
     },
     "2026-06-26_Senegal_Irak": {
-      "hg": 4,
+      "hg": 5,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
@@ -926,7 +926,7 @@
         "won": 3,
         "draw": 0,
         "lost": 0,
-        "gf": 9,
+        "gf": 10,
         "ga": 2,
         "pts": 9
       },
@@ -937,7 +937,7 @@
         "draw": 0,
         "lost": 1,
         "gf": 8,
-        "ga": 6,
+        "ga": 7,
         "pts": 6
       },
       {
@@ -946,7 +946,7 @@
         "won": 1,
         "draw": 0,
         "lost": 2,
-        "gf": 6,
+        "gf": 8,
         "ga": 6,
         "pts": 3
       },
@@ -957,7 +957,7 @@
         "draw": 0,
         "lost": 3,
         "gf": 1,
-        "ga": 10,
+        "ga": 12,
         "pts": 0
       }
     ],
