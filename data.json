@@ -556,6 +556,18 @@
       "ag": 2,
       "live": false,
       "scorers": []
+    },
+    "2026-06-26_Turquia_Estados Unidos": {
+      "hg": 3,
+      "ag": 2,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-26_Paraguay_Australia": {
+      "hg": 0,
+      "ag": 0,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -688,43 +700,43 @@
     "Group D": [
       {
         "name": "Estados Unidos",
-        "played": 2,
+        "played": 3,
         "won": 2,
         "draw": 0,
-        "lost": 0,
-        "gf": 6,
-        "ga": 1,
+        "lost": 1,
+        "gf": 8,
+        "ga": 4,
         "pts": 6
       },
       {
         "name": "Australia",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
         "gf": 2,
         "ga": 2,
-        "pts": 3
+        "pts": 4
       },
       {
         "name": "Paraguay",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
         "gf": 2,
         "ga": 4,
-        "pts": 3
+        "pts": 4
       },
       {
         "name": "Turquia",
-        "played": 2,
-        "won": 0,
+        "played": 3,
+        "won": 1,
         "draw": 0,
         "lost": 2,
-        "gf": 0,
-        "ga": 3,
-        "pts": 0
+        "gf": 3,
+        "ga": 5,
+        "pts": 3
       }
     ],
     "Group E": [
@@ -776,8 +788,8 @@
         "won": 2,
         "draw": 1,
         "lost": 0,
-        "gf": 9,
-        "ga": 3,
+        "gf": 10,
+        "ga": 4,
         "pts": 7
       },
       {
@@ -786,8 +798,8 @@
         "won": 1,
         "draw": 2,
         "lost": 0,
-        "gf": 6,
-        "ga": 2,
+        "gf": 7,
+        "ga": 3,
         "pts": 5
       },
       {
@@ -796,8 +808,8 @@
         "won": 1,
         "draw": 1,
         "lost": 1,
-        "gf": 6,
-        "ga": 6,
+        "gf": 7,
+        "ga": 7,
         "pts": 4
       },
       {
@@ -806,8 +818,8 @@
         "won": 0,
         "draw": 0,
         "lost": 3,
-        "gf": 1,
-        "ga": 11,
+        "gf": 2,
+        "ga": 12,
         "pts": 0
       }
     ],
