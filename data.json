@@ -580,6 +580,30 @@
       "ag": 0,
       "live": false,
       "scorers": []
+    },
+    "2026-06-27_Uruguay_Espana": {
+      "hg": 0,
+      "ag": 1,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-27_Cabo Verde_Arabia Saudi": {
+      "hg": 0,
+      "ag": 0,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-27_Nueva Zelanda_Belgica": {
+      "hg": 0,
+      "ag": 0,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-27_Egypt_Iran": {
+      "hg": 1,
+      "ag": 1,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -837,59 +861,27 @@
     ],
     "Group G": [
       {
-        "name": "Egypt",
-        "played": 2,
-        "won": 1,
-        "draw": 1,
-        "lost": 0,
-        "gf": 4,
-        "ga": 2,
-        "pts": 4
-      },
-      {
-        "name": "Iran",
-        "played": 2,
-        "won": 0,
-        "draw": 2,
-        "lost": 0,
-        "gf": 2,
-        "ga": 2,
-        "pts": 2
-      },
-      {
         "name": "Belgica",
-        "played": 2,
-        "won": 0,
-        "draw": 2,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "pts": 2
-      },
-      {
-        "name": "Nueva Zelanda",
-        "played": 2,
-        "won": 0,
-        "draw": 1,
-        "lost": 1,
-        "gf": 3,
-        "ga": 5,
-        "pts": 1
-      }
-    ],
-    "Group H": [
-      {
-        "name": "Espana",
         "played": 3,
         "won": 1,
         "draw": 2,
         "lost": 0,
-        "gf": 4,
-        "ga": 0,
+        "gf": 2,
+        "ga": 1,
         "pts": 5
       },
       {
-        "name": "Uruguay",
+        "name": "Egypt",
+        "played": 3,
+        "won": 1,
+        "draw": 2,
+        "lost": 0,
+        "gf": 5,
+        "ga": 3,
+        "pts": 5
+      },
+      {
+        "name": "Iran",
         "played": 3,
         "won": 0,
         "draw": 3,
@@ -897,6 +889,28 @@
         "gf": 3,
         "ga": 3,
         "pts": 3
+      },
+      {
+        "name": "Nueva Zelanda",
+        "played": 3,
+        "won": 0,
+        "draw": 1,
+        "lost": 2,
+        "gf": 3,
+        "ga": 6,
+        "pts": 1
+      }
+    ],
+    "Group H": [
+      {
+        "name": "Espana",
+        "played": 3,
+        "won": 2,
+        "draw": 1,
+        "lost": 0,
+        "gf": 5,
+        "ga": 0,
+        "pts": 7
       },
       {
         "name": "Cabo Verde",
@@ -907,6 +921,16 @@
         "gf": 2,
         "ga": 2,
         "pts": 3
+      },
+      {
+        "name": "Uruguay",
+        "played": 3,
+        "won": 0,
+        "draw": 2,
+        "lost": 1,
+        "gf": 3,
+        "ga": 4,
+        "pts": 2
       },
       {
         "name": "Arabia Saudi",
