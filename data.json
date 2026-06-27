@@ -594,15 +594,15 @@
       "scorers": []
     },
     "2026-06-27_Nueva Zelanda_Belgica": {
-      "hg": 0,
-      "ag": 0,
+      "hg": 1,
+      "ag": 5,
       "live": false,
       "scorers": []
     },
     "2026-06-27_Egypt_Iran": {
       "hg": 1,
       "ag": 1,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
@@ -866,8 +866,8 @@
         "won": 1,
         "draw": 2,
         "lost": 0,
-        "gf": 2,
-        "ga": 1,
+        "gf": 6,
+        "ga": 2,
         "pts": 5
       },
       {
@@ -896,8 +896,8 @@
         "won": 0,
         "draw": 1,
         "lost": 2,
-        "gf": 3,
-        "ga": 6,
+        "gf": 4,
+        "ga": 10,
         "pts": 1
       }
     ],
