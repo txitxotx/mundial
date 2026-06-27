@@ -607,14 +607,14 @@
     },
     "2026-06-27_Panama_Inglaterra": {
       "hg": 0,
-      "ag": 0,
-      "live": false,
+      "ag": 2,
+      "live": true,
       "scorers": []
     },
     "2026-06-27_Croacia_Ghana": {
-      "hg": 1,
-      "ag": 0,
-      "live": false,
+      "hg": 2,
+      "ag": 1,
+      "live": true,
       "scorers": []
     }
   },
@@ -1085,42 +1085,42 @@
       {
         "name": "Inglaterra",
         "played": 3,
-        "won": 1,
-        "draw": 2,
+        "won": 2,
+        "draw": 1,
         "lost": 0,
-        "gf": 4,
+        "gf": 6,
         "ga": 2,
-        "pts": 5
+        "pts": 7
+      },
+      {
+        "name": "Croacia",
+        "played": 3,
+        "won": 2,
+        "draw": 0,
+        "lost": 1,
+        "gf": 4,
+        "ga": 4,
+        "pts": 6
       },
       {
         "name": "Ghana",
         "played": 3,
         "won": 1,
-        "draw": 2,
-        "lost": 0,
-        "gf": 1,
-        "ga": 0,
-        "pts": 5
-      },
-      {
-        "name": "Croacia",
-        "played": 3,
-        "won": 1,
         "draw": 1,
         "lost": 1,
-        "gf": 3,
-        "ga": 4,
+        "gf": 1,
+        "ga": 1,
         "pts": 4
       },
       {
         "name": "Panama",
         "played": 3,
         "won": 0,
-        "draw": 1,
-        "lost": 2,
+        "draw": 0,
+        "lost": 3,
         "gf": 0,
-        "ga": 2,
-        "pts": 1
+        "ga": 4,
+        "pts": 0
       }
     ]
   }
