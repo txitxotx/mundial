@@ -631,7 +631,7 @@
     },
     "2026-06-28_Sudafrica_Canada": {
       "hg": 0,
-      "ag": 0,
+      "ag": 1,
       "live": false,
       "scorers": []
     }
