@@ -616,6 +616,18 @@
       "ag": 1,
       "live": true,
       "scorers": []
+    },
+    "2026-06-28_Jordania_Argentina": {
+      "hg": 1,
+      "ag": 3,
+      "live": false,
+      "scorers": []
+    },
+    "2026-06-28_Argelia_Austria": {
+      "hg": 3,
+      "ag": 3,
+      "live": false,
+      "scorers": []
     }
   },
   "groupStandings": {
@@ -1000,42 +1012,42 @@
     "Group J": [
       {
         "name": "Argentina",
-        "played": 2,
-        "won": 2,
+        "played": 3,
+        "won": 3,
         "draw": 0,
         "lost": 0,
-        "gf": 5,
-        "ga": 0,
-        "pts": 6
+        "gf": 8,
+        "ga": 1,
+        "pts": 9
       },
       {
         "name": "Austria",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
-        "gf": 3,
-        "ga": 3,
-        "pts": 3
+        "gf": 6,
+        "ga": 6,
+        "pts": 4
       },
       {
         "name": "Argelia",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 0,
+        "draw": 1,
         "lost": 1,
-        "gf": 2,
-        "ga": 4,
-        "pts": 3
+        "gf": 5,
+        "ga": 7,
+        "pts": 4
       },
       {
         "name": "Jordania",
-        "played": 2,
+        "played": 3,
         "won": 0,
         "draw": 0,
-        "lost": 2,
-        "gf": 2,
-        "ga": 5,
+        "lost": 3,
+        "gf": 3,
+        "ga": 8,
         "pts": 0
       }
     ],
@@ -1061,24 +1073,24 @@
         "pts": 5
       },
       {
-        "name": "Uzbekistan",
-        "played": 3,
-        "won": 1,
-        "draw": 0,
-        "lost": 2,
-        "gf": 2,
-        "ga": 8,
-        "pts": 3
-      },
-      {
         "name": "Congo DR",
         "played": 3,
-        "won": 0,
+        "won": 1,
         "draw": 1,
-        "lost": 2,
-        "gf": 1,
+        "lost": 1,
+        "gf": 4,
         "ga": 3,
-        "pts": 1
+        "pts": 4
+      },
+      {
+        "name": "Uzbekistan",
+        "played": 3,
+        "won": 0,
+        "draw": 0,
+        "lost": 3,
+        "gf": 2,
+        "ga": 11,
+        "pts": 0
       }
     ],
     "Group L": [
