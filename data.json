@@ -1042,43 +1042,43 @@
     "Group K": [
       {
         "name": "Colombia",
-        "played": 2,
+        "played": 3,
         "won": 2,
-        "draw": 0,
+        "draw": 1,
         "lost": 0,
         "gf": 4,
         "ga": 1,
-        "pts": 6
+        "pts": 7
       },
       {
         "name": "Portugal",
-        "played": 2,
+        "played": 3,
         "won": 1,
-        "draw": 1,
+        "draw": 2,
         "lost": 0,
         "gf": 6,
         "ga": 1,
-        "pts": 4
-      },
-      {
-        "name": "Congo DR",
-        "played": 2,
-        "won": 0,
-        "draw": 1,
-        "lost": 1,
-        "gf": 1,
-        "ga": 2,
-        "pts": 1
+        "pts": 5
       },
       {
         "name": "Uzbekistan",
-        "played": 2,
-        "won": 0,
+        "played": 3,
+        "won": 1,
         "draw": 0,
         "lost": 2,
-        "gf": 1,
+        "gf": 2,
         "ga": 8,
-        "pts": 0
+        "pts": 3
+      },
+      {
+        "name": "Congo DR",
+        "played": 3,
+        "won": 0,
+        "draw": 1,
+        "lost": 2,
+        "gf": 1,
+        "ga": 3,
+        "pts": 1
       }
     ],
     "Group L": [
@@ -1098,8 +1098,8 @@
         "won": 2,
         "draw": 0,
         "lost": 1,
-        "gf": 4,
-        "ga": 4,
+        "gf": 5,
+        "ga": 5,
         "pts": 6
       },
       {
@@ -1108,8 +1108,8 @@
         "won": 1,
         "draw": 1,
         "lost": 1,
-        "gf": 1,
-        "ga": 1,
+        "gf": 2,
+        "ga": 2,
         "pts": 4
       },
       {
