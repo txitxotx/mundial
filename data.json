@@ -634,6 +634,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-06-29_Brasil_Japon": {
+      "hg": 1,
+      "ag": 1,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
