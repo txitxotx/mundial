@@ -642,8 +642,8 @@
       "scorers": []
     },
     "2026-06-29_Alemania_Paraguay": {
-      "hg": 0,
-      "ag": 0,
+      "hg": 1,
+      "ag": 1,
       "live": true,
       "scorers": []
     }
