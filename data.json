@@ -660,9 +660,9 @@
       "scorers": []
     },
     "2026-06-30_Francia_Sweden": {
-      "hg": 2,
+      "hg": 3,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
