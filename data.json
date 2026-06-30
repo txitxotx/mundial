@@ -646,6 +646,12 @@
       "ag": 6,
       "live": false,
       "scorers": []
+    },
+    "2026-06-30_Paises Bajos_Marruecos": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
