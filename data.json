@@ -654,9 +654,9 @@
       "scorers": []
     },
     "2026-06-30_Ivory Coast_Noruega": {
-      "hg": 0,
-      "ag": 0,
-      "live": true,
+      "hg": 1,
+      "ag": 2,
+      "live": false,
       "scorers": []
     }
   },
