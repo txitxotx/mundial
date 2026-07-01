@@ -666,9 +666,9 @@
       "scorers": []
     },
     "2026-07-01_Mexico_Ecuador": {
-      "hg": 0,
+      "hg": 2,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
