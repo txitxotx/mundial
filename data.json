@@ -672,9 +672,9 @@
       "scorers": []
     },
     "2026-07-01_Inglaterra_Congo DR": {
-      "hg": 0,
+      "hg": 2,
       "ag": 1,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
