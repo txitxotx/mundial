@@ -678,9 +678,9 @@
       "scorers": []
     },
     "2026-07-01_Belgica_Senegal": {
-      "hg": 0,
-      "ag": 1,
-      "live": true,
+      "hg": 2,
+      "ag": 2,
+      "live": false,
       "scorers": []
     }
   },
