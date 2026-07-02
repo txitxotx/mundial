@@ -684,9 +684,9 @@
       "scorers": []
     },
     "2026-07-02_Estados Unidos_Bosnia-H.": {
-      "hg": 1,
+      "hg": 2,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
