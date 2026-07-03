@@ -712,6 +712,12 @@
       "ag": 5,
       "live": false,
       "scorers": []
+    },
+    "2026-07-03_Argentina_Cabo Verde": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
