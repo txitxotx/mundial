@@ -708,9 +708,9 @@
       "scorers": []
     },
     "2026-07-03_Australia_Egypt": {
-      "hg": 0,
+      "hg": 1,
       "ag": 1,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
