@@ -704,7 +704,7 @@
     "2026-07-03_Suiza_Argelia": {
       "hg": 2,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
