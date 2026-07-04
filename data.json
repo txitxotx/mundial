@@ -733,8 +733,8 @@
     },
     "2026-07-04_Paraguay_Francia": {
       "hg": 0,
-      "ag": 0,
-      "live": true,
+      "ag": 1,
+      "live": false,
       "scorers": []
     }
   },
