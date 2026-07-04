@@ -727,8 +727,8 @@
     },
     "2026-07-04_Canada_Marruecos": {
       "hg": 0,
-      "ag": 1,
-      "live": true,
+      "ag": 3,
+      "live": false,
       "scorers": []
     }
   },
