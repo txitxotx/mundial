@@ -740,7 +740,7 @@
     "2026-07-05_Brasil_Noruega": {
       "hg": 0,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
