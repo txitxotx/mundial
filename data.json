@@ -738,8 +738,8 @@
       "scorers": []
     },
     "2026-07-05_Brasil_Noruega": {
-      "hg": 0,
-      "ag": 0,
+      "hg": 1,
+      "ag": 2,
       "live": false,
       "scorers": []
     }
