@@ -744,9 +744,9 @@
       "scorers": []
     },
     "2026-07-06_Mexico_Inglaterra": {
-      "hg": 0,
-      "ag": 0,
-      "live": true,
+      "hg": 2,
+      "ag": 3,
+      "live": false,
       "scorers": []
     }
   },
