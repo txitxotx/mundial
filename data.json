@@ -770,7 +770,7 @@
     "2026-07-07_Suiza_Colombia": {
       "hg": 0,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
