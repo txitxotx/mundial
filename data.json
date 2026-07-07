@@ -760,6 +760,12 @@
       "ag": 4,
       "live": false,
       "scorers": []
+    },
+    "2026-07-07_Argentina_Egypt": {
+      "hg": 3,
+      "ag": 2,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
