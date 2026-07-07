@@ -764,6 +764,12 @@
     "2026-07-07_Argentina_Egypt": {
       "hg": 3,
       "ag": 2,
+      "live": false,
+      "scorers": []
+    },
+    "2026-07-07_Suiza_Colombia": {
+      "hg": 0,
+      "ag": 0,
       "live": true,
       "scorers": []
     }
