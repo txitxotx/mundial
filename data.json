@@ -754,6 +754,12 @@
       "ag": 1,
       "live": false,
       "scorers": []
+    },
+    "2026-07-07_Estados Unidos_Belgica": {
+      "hg": 1,
+      "ag": 3,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
