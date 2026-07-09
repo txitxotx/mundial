@@ -776,7 +776,7 @@
     "2026-07-09_Francia_Marruecos": {
       "hg": 2,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
