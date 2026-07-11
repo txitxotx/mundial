@@ -786,9 +786,9 @@
       "scorers": []
     },
     "2026-07-11_Noruega_Inglaterra": {
-      "hg": 1,
+      "hg": 2,
       "ag": 1,
-      "live": false,
+      "live": true,
       "scorers": []
     }
   },
