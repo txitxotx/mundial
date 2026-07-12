@@ -790,6 +790,12 @@
       "ag": 2,
       "live": false,
       "scorers": []
+    },
+    "2026-07-12_Argentina_Suiza": {
+      "hg": 1,
+      "ag": 1,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
