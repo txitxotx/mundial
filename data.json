@@ -792,9 +792,9 @@
       "scorers": []
     },
     "2026-07-12_Argentina_Suiza": {
-      "hg": 1,
+      "hg": 3,
       "ag": 1,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
