@@ -800,7 +800,7 @@
     "2026-07-14_Francia_Espana": {
       "hg": 0,
       "ag": 2,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
