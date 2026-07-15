@@ -802,6 +802,12 @@
       "ag": 2,
       "live": false,
       "scorers": []
+    },
+    "2026-07-15_Inglaterra_Argentina": {
+      "hg": 0,
+      "ag": 0,
+      "live": true,
+      "scorers": []
     }
   },
   "groupStandings": {
