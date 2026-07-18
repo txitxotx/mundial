@@ -810,9 +810,9 @@
       "scorers": []
     },
     "2026-07-18_Francia_Inglaterra": {
-      "hg": 0,
-      "ag": 4,
-      "live": false,
+      "hg": 3,
+      "ag": 5,
+      "live": true,
       "scorers": []
     }
   },
