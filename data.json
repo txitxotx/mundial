@@ -816,9 +816,9 @@
       "scorers": []
     },
     "2026-07-19_Espana_Argentina": {
-      "hg": 0,
+      "hg": 1,
       "ag": 0,
-      "live": true,
+      "live": false,
       "scorers": []
     }
   },
